@@ -6,7 +6,7 @@ using Code.Views;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Code.Controllers
+namespace Code.Controllers.Start
 {
     public sealed class MainMenuController: BaseController
     {
@@ -35,6 +35,8 @@ namespace Code.Controllers
         private void StartGame()
         {
             _playerProfileModel.CurrentGameState.Value = GameState.Game;
+            _playerProfileModel.AnalyticsTools.SendMessage("startGame", ("time", Time.realtimeSinceStartup));
+            _playerProfileModel.AdsShower.ShowBanner();
         }
     }
 }

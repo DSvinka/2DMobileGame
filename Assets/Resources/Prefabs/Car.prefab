@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5109029306926099540}
   - component: {fileID: 5778486962821058484}
-  - component: {fileID: 93233018178419264}
+  - component: {fileID: 2334140263381965247}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &93233018178419264
+--- !u!114 &2334140263381965247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

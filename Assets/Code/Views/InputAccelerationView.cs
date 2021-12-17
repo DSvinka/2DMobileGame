@@ -1,11 +1,10 @@
 ﻿using Code.Properties;
 using JoostenProductions;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
 
 namespace Code.Views
 {
-    public sealed class InputJoystickView: BaseInputView
+    public sealed class InputAccelerationView : BaseInputView
     {
         public override void Init(SubscribeProperty<float> leftMove, SubscribeProperty<float> rightMove, float speed)
         {
@@ -20,11 +19,15 @@ namespace Code.Views
 
         private void Move()
         {
-            var moveStep = 10 * Time.deltaTime * CrossPlatformInputManager.GetAxis("Horizontal");
-            if(moveStep > 0)
-                OnRightMove(moveStep);
-            else if(moveStep < 0)
-                OnLeftMove(moveStep);
+            var direction = Vector3.zero; 
+            direction.x = -Input.acceleration.y;
+            direction.z = Input.acceleration.x;
+        
+            if (direction.sqrMagnitude > 1)
+                direction.Normalize();
+        
+            OnRightMove(direction.sqrMagnitude / 20 * _speed);
         }
     }
 }
+

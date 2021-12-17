@@ -2,10 +2,9 @@
 using Code.Models;
 using Code.Properties;
 using Code.Utils;
-using Code.Views;
 using Object = UnityEngine.Object;
 
-namespace Code.Controllers
+namespace Code.Controllers.Game
 {
     internal class InputController : BaseController
     {

@@ -4,7 +4,7 @@ using Code.Views;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Code.Controllers
+namespace Code.Controllers.Game
 {
     public sealed class CarController: BaseController
     {
