@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5778486962821058484}
   - component: {fileID: 2334140263381965247}
   m_Layer: 0
-  m_Name: Car
+  m_Name: CarGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 90f91bf07d6aec14bb60e830bf64792c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.40942347, g: 1, b: 0.3537736, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

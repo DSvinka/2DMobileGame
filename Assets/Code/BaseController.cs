@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Code.Controllers
+namespace Code
 {
     public class BaseController: IDisposable
     {

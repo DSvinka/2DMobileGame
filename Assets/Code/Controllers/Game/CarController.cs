@@ -1,4 +1,5 @@
 ﻿using System;
+using Code.Models;
 using Code.Utils;
 using Code.Views;
 using UnityEngine;
@@ -8,11 +9,15 @@ namespace Code.Controllers.Game
 {
     public sealed class CarController: BaseController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath() { PathResource = "Prefabs/Car" };
+        private readonly ResourcePath _viewPath;
+        private readonly PlayerProfileModel _playerProfileModel;
         private readonly CarView _carView;
 
-        public CarController()
+        public CarController(PlayerProfileModel playerProfileModel)
         {
+            _playerProfileModel = playerProfileModel;
+            
+            _viewPath = _playerProfileModel.CurrentCarModel.ResourcePath;
             _carView = LoadView();
         }
 

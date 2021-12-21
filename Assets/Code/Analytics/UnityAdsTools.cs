@@ -6,7 +6,7 @@ namespace Code.Analytics
 {
     public sealed class UnityAdsTools: MonoBehaviour, IAdsShower
     {
-        private const string GameID = "4509583";
+        private const string GameID = "4515932";
         private const string BannerPlacementID = "Banner_Android";
         
         private void Start()
