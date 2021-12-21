@@ -16,7 +16,7 @@ namespace Code.Controllers.Game
             var inputGameController = new InputGameController(leftMoveDiff, rightMoveDiff, playerProfileModel.CurrentCarModel);
             AddController(inputGameController);
             
-            var carController = new CarController();
+            var carController = new CarController(playerProfileModel);
             AddController(carController);
         }
     }

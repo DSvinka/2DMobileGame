@@ -4,6 +4,7 @@ using Code.States;
 using Code.Utils;
 using Code.Views;
 using UnityEngine;
+using UnityEngine.Purchasing;
 using Object = UnityEngine.Object;
 
 namespace Code.Controllers.Start
@@ -12,13 +13,23 @@ namespace Code.Controllers.Start
     {
         private readonly ResourcePath _viewPath = new ResourcePath() { PathResource = "Prefabs/mainMenu" };
         private readonly PlayerProfileModel _playerProfileModel;
+        private readonly PurchaseModel _purchaseModel;
+        
         private readonly MainMenuView _mainMenuView;
-
-        public MainMenuController(Transform position, PlayerProfileModel playerProfileModel)
+        private readonly ProductsMenuView _productsMenuView;
+        
+        public MainMenuController(Transform position, PlayerProfileModel playerProfileModel, PurchaseModel purchaseModel)
         {
             _playerProfileModel = playerProfileModel;
+            _purchaseModel = purchaseModel;
+
             _mainMenuView = LoadView(position);
-            _mainMenuView.Init(StartGame);
+            _productsMenuView = _mainMenuView.ProductsMenuView;
+            
+            var carController = new PurchaseController(_productsMenuView, playerProfileModel, purchaseModel);
+            AddController(carController);
+
+            _mainMenuView.Init(StartGame, DonateMenu);
         }
 
         private MainMenuView LoadView(Transform position)
@@ -37,6 +48,14 @@ namespace Code.Controllers.Start
             _playerProfileModel.CurrentGameState.Value = GameState.Game;
             _playerProfileModel.AnalyticsTools.SendMessage("startGame", ("time", Time.realtimeSinceStartup));
             _playerProfileModel.AdsShower.ShowBanner();
+        }
+        
+        private void DonateMenu()
+        {
+            var menuGameObject = _productsMenuView.gameObject;
+            
+            menuGameObject.SetActive(!menuGameObject.activeSelf);
+            _playerProfileModel.AnalyticsTools.SendMessage("donateMenuOpened", ("time", Time.realtimeSinceStartup));
         }
     }
 }

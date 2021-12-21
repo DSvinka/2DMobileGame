@@ -10,13 +10,17 @@ namespace Code.Controllers
     {
         private MainMenuController _mainMenuController;
         private GameController _gameController;
+        
         private readonly Transform _placeForUi;
         private readonly PlayerProfileModel _playerProfileModel;
+        private readonly PurchaseModel _purchaseModel;
         
-        public MainController(Transform placeForUi, PlayerProfileModel playerProfile)
+        public MainController(Transform placeForUi, PlayerProfileModel playerProfile, PurchaseModel purchaseModel)
         {
+            _purchaseModel = purchaseModel;
             _playerProfileModel = playerProfile;
             _placeForUi = placeForUi;
+            
             OnChangeGameState(_playerProfileModel.CurrentGameState.Value);
             _playerProfileModel.CurrentGameState.SubscribeOnChange(OnChangeGameState);
         }
@@ -35,7 +39,7 @@ namespace Code.Controllers
             switch (state)
             {
                 case GameState.Start:
-                    _mainMenuController = new MainMenuController(_placeForUi, _playerProfileModel);
+                    _mainMenuController = new MainMenuController(_placeForUi, _playerProfileModel, _purchaseModel);
                     _gameController?.Dispose();
                     break;
                 case GameState.Game:
