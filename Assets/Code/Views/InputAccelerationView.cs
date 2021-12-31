@@ -20,12 +20,15 @@ namespace Code.Views
         private void Move()
         {
             var direction = Vector3.zero; 
-            direction.x = -Input.acceleration.y;
-            direction.z = Input.acceleration.x;
+            
+            // TODO: Временный Костыль
+            direction.x = -Input.GetAxis("Horizontal"); // -Input.acceleration.y;
+            direction.z = Input.GetAxis("Vertical"); // Input.acceleration.x;
         
             if (direction.sqrMagnitude > 1)
                 direction.Normalize();
-        
+
+            // TODO: Временный Костыль
             OnRightMove(direction.sqrMagnitude / 20 * _speed);
         }
     }

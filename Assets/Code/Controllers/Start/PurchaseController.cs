@@ -70,7 +70,7 @@ namespace Code.Controllers.Start
         {
             if (product.definition.id == "green_car")
             {
-                _playerProfileModel.CurrentCarModel.ResourcePath = new ResourcePath() {PathResource = "Prefabs/CarGreen"};
+                _playerProfileModel.CurrentCarModel.ResourcePath = new ResourcePath() {PathResource = "Prefabs/Cars/CarGreen"};
             }
         }
     }

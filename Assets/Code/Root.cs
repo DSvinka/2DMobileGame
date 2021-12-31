@@ -1,4 +1,6 @@
-﻿using Code.Analytics;
+﻿using System.Linq;
+using Code.Analytics;
+using Code.Configs.Items;
 using Code.Controllers;
 using Code.Models;
 using Code.States;
@@ -11,7 +13,9 @@ namespace Code
     {
         [SerializeField] private Transform _uiPoint;
         [SerializeField] private UnityAdsTools _unityAdsTools;
-        [SerializeField] private UnityPurchasingTools _unityPurchasingTools; 
+        [SerializeField] private UnityPurchasingTools _unityPurchasingTools;
+
+        [SerializeField] private ItemConfig[] _itemConfigs;
         
         private MainController _mainController;
 
@@ -27,7 +31,7 @@ namespace Code
             
             playerProfile.CurrentGameState.Value = GameState.Start;
             
-            _mainController = new MainController(_uiPoint, playerProfile, purchaseModel);
+            _mainController = new MainController(_uiPoint, playerProfile, purchaseModel, _itemConfigs.ToList());
         }
 
         private void OnDestroy()

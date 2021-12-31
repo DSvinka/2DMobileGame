@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4291542754835756649}
   - component: {fileID: 2906427042101543690}
   m_Layer: 0
-  m_Name: FlareGun
+  m_Name: BombView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
