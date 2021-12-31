@@ -14,7 +14,7 @@ namespace Code.Controllers.Game
             _view.Init(leftMove, rightMove, car.Speed);
         }
 
-        private readonly ResourcePath _viewPath = new ResourcePath {PathResource = "Prefabs/endlessMove"};
+        private readonly ResourcePath _viewPath = new ResourcePath {PathResource = "Prefabs/InputView"};
         private BaseInputView _view;
 
         private BaseInputView LoadView()
@@ -24,6 +24,7 @@ namespace Code.Controllers.Game
 
             if (!objView.TryGetComponent<BaseInputView>(out var inputView))
                 throw new Exception("Компонент BaseInputView не найден в View");
+            
             return inputView;
         }
     }

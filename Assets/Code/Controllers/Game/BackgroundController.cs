@@ -6,16 +6,16 @@ using UnityEngine;
 
 namespace Code.Controllers.Game
 {
-    public sealed class TapeBackgroundController : BaseController
+    public sealed class BackgroundController : BaseController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath {PathResource = "Prefabs/background"};
+        private readonly ResourcePath _viewPath = new ResourcePath {PathResource = "Prefabs/BackgroundView"};
         private readonly SubscribeProperty<float> _diff;
         private readonly IReadOnlySubscribeProperty<float> _leftMove;
         private readonly IReadOnlySubscribeProperty<float> _rightMove;
         
         private TapeBackgroundView _view;
         
-        public TapeBackgroundController(IReadOnlySubscribeProperty<float> leftMove, IReadOnlySubscribeProperty<float> rightMove)
+        public BackgroundController(IReadOnlySubscribeProperty<float> leftMove, IReadOnlySubscribeProperty<float> rightMove)
         {
             _view = LoadView();
             _diff = new SubscribeProperty<float>();

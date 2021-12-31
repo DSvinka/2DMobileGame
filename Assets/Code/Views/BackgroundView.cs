@@ -20,6 +20,5 @@ namespace Code.Views
             else if (position.x >= _rightBorder)
                 transform.position = new Vector3(_leftBorder + (_rightBorder - position.x), position.y, position.z);
         }
-
     }
 }

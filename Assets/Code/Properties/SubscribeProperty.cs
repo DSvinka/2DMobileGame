@@ -1,5 +1,4 @@
-﻿using Code.Interfaces;
-using System;
+﻿using System;
 using Code.Interfaces.Properties;
 
 namespace Code.Properties
