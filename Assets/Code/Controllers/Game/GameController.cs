@@ -1,4 +1,7 @@
-﻿using Code.Models;
+﻿using System.Collections.Generic;
+using Code.Configs.Abilities;
+using Code.Configs.Items;
+using Code.Models;
 using Code.Properties;
 using UnityEngine;
 
@@ -6,7 +9,7 @@ namespace Code.Controllers.Game
 {
     public class GameController : BaseController
     {
-        public GameController(PlayerProfileModel playerProfileModel, Transform placeForUi)
+        public GameController(PlayerProfileModel playerProfileModel, List<AbilityItemConfig> abilityConfigs, Transform placeForUi)
         {
             var leftMoveDiff = new SubscribeProperty<float>();
             var rightMoveDiff = new SubscribeProperty<float>();
@@ -25,6 +28,9 @@ namespace Code.Controllers.Game
             
             var carController = new CarController(leftMoveDiff, rightMoveDiff, playerProfileModel);
             AddController(carController);
+
+            var abilityController = new AbilityController(abilityConfigs, hudController.GetGameObject());
+            AddController(abilityController);
         }
     }
 }

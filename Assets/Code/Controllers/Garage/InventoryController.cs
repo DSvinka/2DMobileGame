@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Code.Configs.Items;
 using Code.Interfaces;
-using Code.Interfaces.Repositories;
 using Code.Models;
 using Code.Repositories;
 using Code.Utils;
@@ -18,7 +17,7 @@ namespace Code.Controllers.Garage
 
         private readonly InventoryModel _inventoryModel;
         private readonly InventoryView _inventoryView;
-        private readonly IItemsRepository _itemsRepository;
+        private readonly IRepository<int, IItem> _itemsRepository;
 
         private readonly Dictionary<int, IItem> _items;
 
@@ -26,14 +25,16 @@ namespace Code.Controllers.Garage
         {
             _inventoryView = garageView.Inventory;
             _inventoryModel = new InventoryModel();
-            _itemsRepository = new ItemsRepository(itemConfigs);
+            var itemsRepository = new ItemsRepository(itemConfigs);
+            AddController(itemsRepository);
 
+            _itemsRepository = itemsRepository;
             _items = new Dictionary<int, IItem>();
         }
 
         public void LoadInventory()
         {
-            foreach (var item in _itemsRepository.Items.Values)
+            foreach (var item in _itemsRepository.Collection.Values)
             {
                 _inventoryModel.EquipItem(item);
             }

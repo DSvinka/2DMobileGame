@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using Code.Configs.Items;
 using Code.Interfaces;
-using Code.Interfaces.Repositories;
 using Code.Models;
 
 namespace Code.Repositories
 {
-    public sealed class ItemsRepository: BaseController, IItemsRepository
+    public sealed class ItemsRepository: BaseController, IRepository<int, IItem>
     {
-        public IReadOnlyDictionary<int, IItem> Items => _itemsMapByID;
+        public IReadOnlyDictionary<int, IItem> Collection => _itemsMapByID;
 
         private Dictionary<int, IItem> _itemsMapByID;
 

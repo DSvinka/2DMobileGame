@@ -31,6 +31,11 @@ namespace Code.Controllers.Game
             _leftMove.SubscribeOnChange(OnMoved);
             _rightMove.SubscribeOnChange(OnMoved);
         }
+
+        public HudView GetGameObject()
+        {
+            return _hudView;
+        }
         
         private HudView LoadView(Transform spawnUIPosition)
         {

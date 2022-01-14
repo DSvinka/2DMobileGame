@@ -368,7 +368,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -492,6 +492,8 @@ MonoBehaviour:
   _itemConfigs:
   - {fileID: 11400000, guid: dce6238a8c4cbec489c9baa0d5967ce5, type: 2}
   - {fileID: 11400000, guid: 55e1ab6e4a5a47442b273aefc71f3585, type: 2}
+  _abilityConfigs:
+  - {fileID: 11400000, guid: 0bd1d33b715cda8469032d99feb157fa, type: 2}
 --- !u!4 &1318710376
 Transform:
   m_ObjectHideFlags: 0
