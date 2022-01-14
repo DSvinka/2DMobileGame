@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Code.Configs.Abilities;
 using Code.Configs.Items;
 using Code.Controllers.Game;
 using Code.Controllers.Garage;
@@ -19,9 +20,12 @@ namespace Code.Controllers
         private readonly PlayerProfileModel _playerProfileModel;
         private readonly PurchaseModel _purchaseModel;
         private readonly List<ItemConfig> _itemConfigs;
+        private readonly List<AbilityItemConfig> _abilityConfigs;
         
-        public MainController(Transform placeForUi, PlayerProfileModel playerProfile, PurchaseModel purchaseModel, List<ItemConfig> itemConfigs)
+        // Вынести параметры в отдельный struct.
+        public MainController(Transform placeForUi, PlayerProfileModel playerProfile, PurchaseModel purchaseModel, List<ItemConfig> itemConfigs, List<AbilityItemConfig> abilityItemConfigs)
         {
+            _abilityConfigs = abilityItemConfigs;
             _itemConfigs = itemConfigs;
             _purchaseModel = purchaseModel;
             _playerProfileModel = playerProfile;
@@ -56,7 +60,7 @@ namespace Code.Controllers
                     _garageController = new GarageController(_playerProfileModel, _itemConfigs, _placeForUi);
                     break;
                 case GameState.Game:
-                    _gameController = new GameController(_playerProfileModel, _placeForUi);
+                    _gameController = new GameController(_playerProfileModel, _abilityConfigs, _placeForUi);
                     _mainMenuController?.Dispose();
                     _garageController?.Dispose();
                     break;
