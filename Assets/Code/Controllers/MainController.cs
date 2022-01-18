@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Code.Configs.Abilities;
 using Code.Configs.Items;
 using Code.Controllers.Game;
 using Code.Controllers.Garage;
@@ -15,21 +14,21 @@ namespace Code.Controllers
         private MainMenuController _mainMenuController;
         private GameController _gameController;
         private GarageController _garageController;
-        
+
+        private readonly Camera _camera;
         private readonly Transform _placeForUi;
         private readonly PlayerProfileModel _playerProfileModel;
         private readonly PurchaseModel _purchaseModel;
         private readonly List<ItemConfig> _itemConfigs;
-        private readonly List<AbilityItemConfig> _abilityConfigs;
-        
+
         // Вынести параметры в отдельный struct.
-        public MainController(Transform placeForUi, PlayerProfileModel playerProfile, PurchaseModel purchaseModel, List<ItemConfig> itemConfigs, List<AbilityItemConfig> abilityItemConfigs)
+        public MainController(Transform placeForUi, Camera camera, PlayerProfileModel playerProfile, PurchaseModel purchaseModel, List<ItemConfig> itemConfigs)
         {
-            _abilityConfigs = abilityItemConfigs;
             _itemConfigs = itemConfigs;
             _purchaseModel = purchaseModel;
             _playerProfileModel = playerProfile;
             _placeForUi = placeForUi;
+            _camera = camera;
             
             OnChangeGameState(_playerProfileModel.CurrentGameState.Value);
             _playerProfileModel.CurrentGameState.SubscribeOnChange(OnChangeGameState);
@@ -60,7 +59,9 @@ namespace Code.Controllers
                     _garageController = new GarageController(_playerProfileModel, _itemConfigs, _placeForUi);
                     break;
                 case GameState.Game:
-                    _gameController = new GameController(_playerProfileModel, _abilityConfigs, _placeForUi);
+                    _playerProfileModel.Reset();
+                    
+                    _gameController = new GameController(_playerProfileModel, _camera, _placeForUi);
                     _mainMenuController?.Dispose();
                     _garageController?.Dispose();
                     break;

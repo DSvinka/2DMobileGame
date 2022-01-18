@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Code.Interfaces;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Code.Views
 {

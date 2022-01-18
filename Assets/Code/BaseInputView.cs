@@ -1,30 +1,30 @@
-﻿using Code.Properties;
+﻿using Code.Models;
+using Code.Properties;
 using UnityEngine;
 
 namespace Code
 {
     public abstract class BaseInputView : MonoBehaviour
     {
-        public virtual void Init(SubscribeProperty<float> leftMove, SubscribeProperty<float> rightMove, float speed)
+        protected float _speed;
+        private SubscribeProperty<float> _moveUpdate;
+        private SubscribeProperty<Vector2> _touchPosition;
+
+        public virtual void Init(InputModel inputModel, float speed)
         {
-            _leftMove = leftMove;
-            _rightMove = rightMove;
+            _touchPosition = inputModel.TouchPosition;
+            _moveUpdate = inputModel.MoveUpdate;
             _speed = speed;
         }
 
-
-        protected float _speed;
-        private SubscribeProperty<float> _leftMove;
-        private SubscribeProperty<float> _rightMove;
-
-        protected virtual void OnLeftMove(float value)
+        protected virtual void OnTouchMove(Vector2 position)
         {
-            _leftMove.Value = value;
+            _touchPosition.Value = position;
         }
-
-        protected virtual void OnRightMove(float value)
+        
+        protected virtual void OnMove(float deltatime)
         {
-            _rightMove.Value = value;
+            _moveUpdate.Value = deltatime;
         }
     } 
 

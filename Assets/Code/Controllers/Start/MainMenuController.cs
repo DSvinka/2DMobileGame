@@ -46,7 +46,8 @@ namespace Code.Controllers.Start
         {
             _playerProfileModel.CurrentGameState.Value = GameState.Game;
             _playerProfileModel.AnalyticsTools.SendMessage("startGame", ("time", Time.realtimeSinceStartup));
-            _playerProfileModel.AdsShower.ShowBanner();
+            // TODO: Отключил так как пока что нету интернета
+            //_playerProfileModel.AdsShower.ShowBanner();
         }
         
         private void DonateMenu()

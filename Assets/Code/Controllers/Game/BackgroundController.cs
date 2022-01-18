@@ -1,4 +1,5 @@
 ﻿using Code.Interfaces.Properties;
+using Code.Models;
 using Code.Properties;
 using Code.Utils;
 using Code.Views;
@@ -9,32 +10,30 @@ namespace Code.Controllers.Game
     public sealed class BackgroundController : BaseController
     {
         private readonly ResourcePath _viewPath = new ResourcePath {PathResource = "Prefabs/BackgroundView"};
+        private readonly SubscribeProperty<float> _moveUpdate;
         private readonly SubscribeProperty<float> _diff;
-        private readonly IReadOnlySubscribeProperty<float> _leftMove;
-        private readonly IReadOnlySubscribeProperty<float> _rightMove;
-        
+
+        private PlayerProfileModel _playerProfileModel;
         private TapeBackgroundView _view;
         
-        public BackgroundController(IReadOnlySubscribeProperty<float> leftMove, IReadOnlySubscribeProperty<float> rightMove)
+        public BackgroundController(InputModel inputModel, PlayerProfileModel playerProfileModel)
         {
+            _playerProfileModel = playerProfileModel;
+            
             _view = LoadView();
+            _moveUpdate = inputModel.MoveUpdate;
+            _moveUpdate.SubscribeOnChange(Move);
+            
             _diff = new SubscribeProperty<float>();
-        
-            _leftMove = leftMove;
-            _rightMove = rightMove;
-        
+
             _view.Init(_diff);
-        
-            _leftMove.SubscribeOnChange(Move);
-            _rightMove.SubscribeOnChange(Move);
         }
 
         protected override void OnDispose()
         {
-            _leftMove.UnSubscribeOnChange(Move);
-            _rightMove.UnSubscribeOnChange(Move);
-        
             base.OnDispose();
+            
+            _moveUpdate.UnSubscribeOnChange(Move);
         }
 
         private TapeBackgroundView LoadView()
@@ -45,9 +44,9 @@ namespace Code.Controllers.Game
             return objView.GetComponent<TapeBackgroundView>();
         }
 
-        private void Move(float value)
+        private void Move(float deltatime)
         {
-            _diff.Value = value;
+            _diff.Value = _playerProfileModel.Speed * deltatime;
         }
     }
 }
