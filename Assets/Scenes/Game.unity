@@ -486,14 +486,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ff9e90618d85642877737797b03198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 519420031}
   _uiPoint: {fileID: 1114697963}
   _unityAdsTools: {fileID: 37470915}
   _unityPurchasingTools: {fileID: 137953973}
   _itemConfigs:
   - {fileID: 11400000, guid: dce6238a8c4cbec489c9baa0d5967ce5, type: 2}
   - {fileID: 11400000, guid: 55e1ab6e4a5a47442b273aefc71f3585, type: 2}
-  _abilityConfigs:
-  - {fileID: 11400000, guid: 0bd1d33b715cda8469032d99feb157fa, type: 2}
 --- !u!4 &1318710376
 Transform:
   m_ObjectHideFlags: 0

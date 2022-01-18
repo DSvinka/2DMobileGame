@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Code.Configs.Abilities;
-using Code.Configs.Items;
+﻿using Code.Controllers.Game.Player;
 using Code.Models;
 using Code.Properties;
 using UnityEngine;
@@ -9,28 +7,24 @@ namespace Code.Controllers.Game
 {
     public class GameController : BaseController
     {
-        public GameController(PlayerProfileModel playerProfileModel, List<AbilityItemConfig> abilityConfigs, Transform placeForUi)
+        public GameController(PlayerProfileModel playerProfileModel, Camera camera, Transform placeForUi)
         {
-            var leftMoveDiff = new SubscribeProperty<float>();
-            var rightMoveDiff = new SubscribeProperty<float>();
+            var touchPosition = new SubscribeProperty<Vector2>();
+            var moveUpdate = new SubscribeProperty<float>();
+
+            var inputModel = new InputModel(touchPosition, moveUpdate);
         
-            var backgroundController = new BackgroundController(leftMoveDiff, rightMoveDiff);
+            var backgroundController = new BackgroundController(inputModel, playerProfileModel);
             AddController(backgroundController);
 
-            var enterGarageController = new EnterGarageController(playerProfileModel, leftMoveDiff, rightMoveDiff);
-            AddController(enterGarageController);
+            var enemiesController = new EnemiesController(inputModel, playerProfileModel);
+            AddController(enemiesController);
 
-            var hudController = new HudController(placeForUi, enterGarageController.GetGameObject(), leftMoveDiff, rightMoveDiff);
-            AddController(hudController);
-        
-            var inputGameController = new InputGameController(leftMoveDiff, rightMoveDiff, playerProfileModel.CurrentCarModel);
+            var inputGameController = new InputGameController(inputModel, playerProfileModel);
             AddController(inputGameController);
-            
-            var carController = new CarController(leftMoveDiff, rightMoveDiff, playerProfileModel);
-            AddController(carController);
 
-            var abilityController = new AbilityController(abilityConfigs, hudController.GetGameObject());
-            AddController(abilityController);
+            var playerController = new PlayerController(inputModel, playerProfileModel, placeForUi, camera);
+            AddController(playerController);
         }
     }
 }
