@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e44a121d1574145897ba4be0011af0d, type: 3}
+  m_Name: DataSources
+  m_EditorClassIdentifier: 
+  _itemsDataSource: {fileID: 11400000, guid: 95886a37466cb4c45bcfd42e6cb25b35, type: 2}
+  _rewardsDataSource: {fileID: 11400000, guid: aba7ad9392b41ba409fef06113f543f9, type: 2}
+  _settingsDataSource: {fileID: 11400000, guid: c695c198150fa81459baaa9cd116f227, type: 2}
+  _upgradesDataSource: {fileID: 11400000, guid: cf3dca41d73d2f249a393f52873acb57, type: 2}

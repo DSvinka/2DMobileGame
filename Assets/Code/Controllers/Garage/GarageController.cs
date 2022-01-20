@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Code.Configs;
 using Code.Configs.Items;
 using Code.Models;
 using Code.States;
@@ -12,17 +13,17 @@ namespace Code.Controllers.Garage
 {
     public sealed class GarageController: BaseController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath() { PathResource = "Prefabs/UI/GarageMenu" };
+        private readonly ResourcePath _viewPath = new ResourcePath() { PathResource = "Prefabs/UI/Menus/GarageMenu" };
         private readonly PlayerProfileModel _playerProfileModel;
         private readonly GarageView _garageView;
 
-        public GarageController(PlayerProfileModel playerProfileModel, List<ItemConfig> itemConfigs, Transform spawnUIPosition)
+        public GarageController(Transform spawnUIPosition, PlayerProfileModel playerProfileModel, DataSources dataSources)
         {
             _garageView = LoadView(spawnUIPosition);
             _garageView.Init(OnExitButton);
             _playerProfileModel = playerProfileModel;
 
-            var inventoryController = new InventoryController(itemConfigs, _garageView);
+            var inventoryController = new InventoryController(_garageView, dataSources);
             inventoryController.LoadInventory();
             AddController(inventoryController);
         }

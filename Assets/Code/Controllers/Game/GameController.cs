@@ -7,7 +7,7 @@ namespace Code.Controllers.Game
 {
     public class GameController : BaseController
     {
-        public GameController(PlayerProfileModel playerProfileModel, Camera camera, Transform placeForUi)
+        public GameController(Transform placeForUi, PlayerProfileModel playerProfileModel, Camera camera)
         {
             var touchPosition = new SubscribeProperty<Vector2>();
             var moveUpdate = new SubscribeProperty<float>();

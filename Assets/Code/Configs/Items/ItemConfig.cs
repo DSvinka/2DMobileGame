@@ -2,15 +2,13 @@
 
 namespace Code.Configs.Items
 {
-    [CreateAssetMenu(fileName = "ItemConfig", menuName = "Configs/ItemConfig", order = 0)]
+    [CreateAssetMenu(fileName = "ItemConfig", menuName = "Configs/Items/ItemConfig")]
     public sealed class ItemConfig : ScriptableObject
     {
         [SerializeField] private int _id;
-        [SerializeField] private string _title;
-        [SerializeField] private Sprite _icon;
+        [SerializeField] private ItemInfo _itemInfo;
 
         public int ID => _id;
-        public string Title => _title;
-        public Sprite Icon => _icon;
+        public ItemInfo ItemInfo => _itemInfo;
     }
 }

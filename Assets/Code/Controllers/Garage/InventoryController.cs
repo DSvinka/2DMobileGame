@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Code.Configs;
 using Code.Configs.Items;
 using Code.Interfaces;
 using Code.Models;
@@ -13,7 +14,7 @@ namespace Code.Controllers.Garage
 {
     public sealed class InventoryController: BaseController
     {
-        private readonly ResourcePath _itemViewPath = new ResourcePath() { PathResource = "Prefabs/UI/InventoryItem" };
+        private readonly ResourcePath _itemViewPath = new ResourcePath() { PathResource = "Prefabs/UI/Items/InventoryItem" };
 
         private readonly InventoryModel _inventoryModel;
         private readonly InventoryView _inventoryView;
@@ -21,11 +22,11 @@ namespace Code.Controllers.Garage
 
         private readonly Dictionary<int, IItem> _items;
 
-        public InventoryController(List<ItemConfig> itemConfigs, GarageView garageView)
+        public InventoryController(GarageView garageView, DataSources dataSources)
         {
             _inventoryView = garageView.Inventory;
             _inventoryModel = new InventoryModel();
-            var itemsRepository = new ItemsRepository(itemConfigs);
+            var itemsRepository = new ItemsRepository(dataSources.ItemsDataSource);
             AddController(itemsRepository);
 
             _itemsRepository = itemsRepository;

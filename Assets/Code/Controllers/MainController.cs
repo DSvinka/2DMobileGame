@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Code.Configs;
 using Code.Configs.Items;
 using Code.Controllers.Game;
 using Code.Controllers.Garage;
@@ -11,24 +11,28 @@ namespace Code.Controllers
 {
     public sealed class MainController : BaseController
     {
+        private PlayerCurrencyController _playerCurrencyController;
         private MainMenuController _mainMenuController;
-        private GameController _gameController;
         private GarageController _garageController;
-
+        private GameController _gameController;
+        
         private readonly Camera _camera;
         private readonly Transform _placeForUi;
+        private readonly DataSources _dataSources;
         private readonly PlayerProfileModel _playerProfileModel;
         private readonly PurchaseModel _purchaseModel;
-        private readonly List<ItemConfig> _itemConfigs;
 
         // Вынести параметры в отдельный struct.
-        public MainController(Transform placeForUi, Camera camera, PlayerProfileModel playerProfile, PurchaseModel purchaseModel, List<ItemConfig> itemConfigs)
+        public MainController(Transform placeForUi,  PlayerProfileModel playerProfileModel, DataSources dataSources, Camera camera, PurchaseModel purchaseModel)
         {
-            _itemConfigs = itemConfigs;
+            _dataSources = dataSources;
             _purchaseModel = purchaseModel;
-            _playerProfileModel = playerProfile;
+            _playerProfileModel = playerProfileModel;
             _placeForUi = placeForUi;
             _camera = camera;
+
+            _playerCurrencyController = new PlayerCurrencyController(placeForUi, playerProfileModel);
+            AddController(_playerCurrencyController);
             
             OnChangeGameState(_playerProfileModel.CurrentGameState.Value);
             _playerProfileModel.CurrentGameState.SubscribeOnChange(OnChangeGameState);
@@ -49,22 +53,25 @@ namespace Code.Controllers
             switch (state)
             {
                 case GameState.Start:
-                    _mainMenuController = new MainMenuController(_placeForUi, _playerProfileModel, _purchaseModel);
+                    _mainMenuController = new MainMenuController(_placeForUi, _playerProfileModel, _dataSources, _purchaseModel);
                     _gameController?.Dispose();
                     _garageController?.Dispose();
                     break;
+                
                 case GameState.Garage:
                     _mainMenuController?.Dispose();
                     _gameController?.Dispose();
-                    _garageController = new GarageController(_playerProfileModel, _itemConfigs, _placeForUi);
+                    _garageController = new GarageController(_placeForUi, _playerProfileModel, _dataSources);
                     break;
+                
                 case GameState.Game:
                     _playerProfileModel.Reset();
                     
-                    _gameController = new GameController(_playerProfileModel, _camera, _placeForUi);
+                    _gameController = new GameController(_placeForUi, _playerProfileModel, _camera);
                     _mainMenuController?.Dispose();
                     _garageController?.Dispose();
                     break;
+                
                 default:
                     _mainMenuController?.Dispose();
                     _gameController?.Dispose();

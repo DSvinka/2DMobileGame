@@ -101,6 +101,7 @@ namespace Code.Controllers.Game
         private void OnEnemyDamage(int id, float damage)
         {
             var entityModel = _enemies[id];
+            
             entityModel.AddDamage(damage);
             entityModel.EntityView.HealthText.text = $"HP: {entityModel.Health}";
         }

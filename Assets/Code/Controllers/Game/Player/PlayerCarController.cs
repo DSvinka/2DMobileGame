@@ -26,33 +26,26 @@ namespace Code.Controllers.Game.Player
             _viewPath = _playerProfileModel.CurrentCarModel.ResourcePath;
             _playerCarView = LoadView();
             _playerCarView.Init(EntityType.Player);
-            _playerCarView.OnDamage += OnPlayerDamage;
+            _playerCarView.OnDamage += OnDamage;
 
             _playerProfileModel.CurrentCarModel.SetEntityView(_playerCarView);
-            _playerProfileModel.CurrentCarModel.OnDeath += OnPlayerDeath;
+            
             _playerCarView.HealthText.text = $"HP: {_playerProfileModel.CurrentCarModel.Health}";
 
             var turretController = new PlayerTurretController(inputModel, camera, _playerProfileModel);
             AddController(turretController);
         }
 
-        private void OnPlayerDeath(int id)
-        {
-            Debug.Log("Вы погибли!");
-            _playerProfileModel.CurrentGameState.Value = GameState.Start;
-        }
-        
-        private void OnPlayerDamage(int id, float damage)
-        {
-            _playerProfileModel.CurrentCarModel.AddDamage(damage);
-            _playerCarView.HealthText.text = $"HP: {_playerProfileModel.CurrentCarModel.Health}";
-        }
-
         protected override void OnDispose()
         {
             base.OnDispose();
             _moveUpdate.UnSubscribeOnChange(RotateWheels);
-            _playerCarView.OnDamage -= OnPlayerDamage;
+            _playerCarView.OnDamage -= OnDamage;
+        }
+
+        private void OnDamage(int id, float damage)
+        {
+            _playerProfileModel.CurrentCarModel.AddDamage(damage);
         }
 
         private PlayerCarView LoadView()
