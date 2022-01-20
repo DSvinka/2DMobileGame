@@ -6,14 +6,17 @@ namespace Code.Repositories
 {
     public sealed class SavesRepository: BaseController
     {
+        private readonly SaveCarModel _saveCarModel;
         private readonly SaveRewardModel _saveRewardModel;
         private readonly SaveCurrencyModel _saveCurrencyModel;
-        
+
+        public SaveCarModel SaveCarModel => _saveCarModel;
         public SaveRewardModel SaveRewardModel => _saveRewardModel;
         public SaveCurrencyModel SaveCurrencyModel => _saveCurrencyModel;
         
         public SavesRepository()
         {
+            _saveCarModel = new SaveCarModel();
             _saveRewardModel = new SaveRewardModel();
             _saveCurrencyModel = new SaveCurrencyModel();
         }
@@ -21,6 +24,46 @@ namespace Code.Repositories
         public void DeleteAll()
         {
             PlayerPrefs.DeleteAll();
+        }
+    }
+
+    public sealed class SaveCarModel
+    {
+        public static string HealthKey = nameof(HealthKey);
+        public static string BulletDamageKey = nameof(BulletDamageKey);
+        public static string BulletShotRateKey = nameof(BulletShotRateKey);
+        public static string BulletShotForceKey = nameof(BulletShotForceKey);
+        
+        public float Health
+        {
+            get => PlayerPrefs.GetFloat(HealthKey, 100);
+            set => PlayerPrefs.SetFloat(HealthKey, value);
+        }
+
+        public float BulletDamage
+        {
+            get => PlayerPrefs.GetFloat(BulletDamageKey, 10);
+            set => PlayerPrefs.SetFloat(BulletDamageKey, value);
+        }
+
+        public float BulletShotRate
+        {
+            get => PlayerPrefs.GetFloat(BulletShotRateKey, 0.5f);
+            set => PlayerPrefs.SetFloat(BulletShotRateKey, value);
+        }
+        
+        public float BulletShotForce
+        {
+            get => PlayerPrefs.GetFloat(BulletShotForceKey, 15f);
+            set => PlayerPrefs.SetFloat(BulletShotForceKey, value);
+        }
+
+        public void Delete()
+        {
+            PlayerPrefs.DeleteKey(HealthKey);
+            PlayerPrefs.DeleteKey(BulletDamageKey);
+            PlayerPrefs.DeleteKey(BulletShotRateKey);
+            PlayerPrefs.DeleteKey(BulletShotForceKey);
         }
     }
 

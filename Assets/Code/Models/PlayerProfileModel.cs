@@ -30,8 +30,6 @@ namespace Code.Models
 
         public PlayerProfileModel(float speed, IAdsShower unityAdsTools, IUnityPurchasingTools unityPurchasingTools)
         {
-            Reset();
-            
             _speed = speed;
             _savesRepository = new SavesRepository();
             _currentGameState = new SubscribeProperty<GameState>();
@@ -39,21 +37,23 @@ namespace Code.Models
             _analyticsTools = new UnityAnalyticsTools();
             _unityPurchasingTools = unityPurchasingTools;
             _adsShower = unityAdsTools;
+            
+            Reset();
         }
 
         public void Reset()
         {
-            // TODO: Нужно избавится от магических чисел, например сделать конфиг машинки.
+            var saveCarModel = _savesRepository.SaveCarModel;
             _currentCarModel = new CarModel(new CarModelConfig()
             {
                 EntityView = null,
                 
-                MaxHealth = 100f,
-                ShotRate = 1f,
+                MaxHealth = saveCarModel.Health,
+                ShotRate = saveCarModel.BulletShotRate,
                 
-                BulletLifeTime = 20f,
-                BulletShotForce = 15f,
-                BulletDamage = 10f,
+                BulletLifeTime = 20f, // TODO: Вывести в класс настроек.
+                BulletShotForce = saveCarModel.BulletShotForce,
+                BulletDamage = saveCarModel.BulletDamage,
             });
         }
     }

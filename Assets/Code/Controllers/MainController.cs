@@ -23,7 +23,7 @@ namespace Code.Controllers
         private readonly PurchaseModel _purchaseModel;
 
         // Вынести параметры в отдельный struct.
-        public MainController(Transform placeForUi,  PlayerProfileModel playerProfileModel, DataSources dataSources, Camera camera, PurchaseModel purchaseModel)
+        public MainController(Transform placeForUi, PlayerProfileModel playerProfileModel, DataSources dataSources, Camera camera, PurchaseModel purchaseModel)
         {
             _dataSources = dataSources;
             _purchaseModel = purchaseModel;
