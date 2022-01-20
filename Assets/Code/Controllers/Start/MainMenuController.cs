@@ -10,7 +10,7 @@ namespace Code.Controllers.Start
 {
     public sealed class MainMenuController: BaseController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath() { PathResource = "Prefabs/UI/MainMenuUI" };
+        private readonly ResourcePath _viewPath = new ResourcePath() { PathResource = "Prefabs/UI/Menus/MainMenu" };
         private readonly PlayerProfileModel _playerProfileModel;
         private readonly PurchaseModel _purchaseModel;
         
