@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 3070540047459956297}
   - component: {fileID: 3070540047459956302}
   - component: {fileID: 3070540047459956303}
-  - component: {fileID: 3070540047459956296}
+  - component: {fileID: 3416224565229393768}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3070540047459956296
+--- !u!114 &3416224565229393768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3070540047459956298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: e7f88b3675a843438becf6b988f6575a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -446,6 +446,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _animationButtonType: 2
+  _duration: 0.5
+  _strength: -0.5
 --- !u!1 &3070540047593308098
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventory: {fileID: 6498069640659205071}
-  _exitButton: {fileID: 3070540047459956296}
+  _exitButton: {fileID: 0}
 --- !u!1 &3070540048348352241
 GameObject:
   m_ObjectHideFlags: 0

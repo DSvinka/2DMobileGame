@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46224852d3ed462ca5ab954bffe87406, type: 3}
   m_Name: EnemyConfig
   m_EditorClassIdentifier: 
-  _enemyType: 0
-  _enemyViewPrefab: {fileID: 0}
-  _maxHealth: 0
-  _shotRate: 0
-  _maxSpawnCount: 0
-  _bulletLifeTime: 0
-  _bulletShotForce: 0
-  _bulletDamage: 0
+  _enemyType: 1
+  _enemyViewPrefab: {fileID: 1258029961292773817, guid: 2b7ab2f9da8088444bf5ba4c97d006eb, type: 3}
+  _maxHealth: 100
+  _shotRate: 2
+  _giveMoneyOnDeath: 35
+  _maxSpawnCount: 2
+  _bulletLifeTime: 20
+  _bulletShotForce: 15
+  _bulletDamage: 15

@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 8717999123998098630}
   - component: {fileID: 8717999123998098681}
   - component: {fileID: 8717999123998098680}
-  - component: {fileID: 8717999123998098631}
+  - component: {fileID: 2756716564690645340}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -614,7 +614,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8717999123998098631
+--- !u!114 &2756716564690645340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8717999123998098629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: e7f88b3675a843438becf6b988f6575a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -635,7 +635,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.76601356, g: 1, b: 0.759434, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -658,6 +658,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _animationButtonType: 2
+  _sizeOnSelected: -1
+  _duration: 0.5
+  _strength: -0.5
 --- !u!1 &8717999124140991867
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +756,7 @@ MonoBehaviour:
   _titleText: {fileID: 8717999122313744669}
   _descriptionText: {fileID: 8717999123905426245}
   _priceText: {fileID: 8717999124347152891}
-  _buyButton: {fileID: 8717999123998098631}
+  _buyButton: {fileID: 2756716564690645340}
 --- !u!1 &8717999124347152889
 GameObject:
   m_ObjectHideFlags: 0

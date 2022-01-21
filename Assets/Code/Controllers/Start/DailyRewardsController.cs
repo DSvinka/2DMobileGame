@@ -8,6 +8,7 @@ using Code.Enums;
 using Code.Models;
 using Code.Repositories;
 using Code.Views.UI;
+using DG.Tweening;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -48,6 +49,7 @@ namespace Code.Controllers.Start
         {
             _dailyRewardsView.gameObject.SetActive(true);
             _dailyRewardsView.StartCoroutine(RewardsStartUpdate());
+
         }
 
         public void CloseMenu()
