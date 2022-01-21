@@ -1,4 +1,5 @@
-﻿using Code.Configs.Items;
+﻿using Code.Configs.Enemies;
+using Code.Configs.Items;
 using Code.Configs.Rewards;
 using Code.Configs.Upgrades;
 using UnityEngine;
@@ -12,10 +13,12 @@ namespace Code.Configs
         [SerializeField] private RewardsDataSource _rewardsDataSource;
         [SerializeField] private SettingsDataSource _settingsDataSource;
         [SerializeField] private UpgradesDataSource _upgradesDataSource;
+        [SerializeField] private EnemiesDataSource _enemiesDataSource;
 
         public ItemsDataSource ItemsDataSource => _itemsDataSource;
         public RewardsDataSource RewardsDataSource => _rewardsDataSource;
         public SettingsDataSource SettingsDataSource => _settingsDataSource;
         public UpgradesDataSource UpgradesDataSource => _upgradesDataSource;
+        public EnemiesDataSource EnemiesDataSource => _enemiesDataSource;
     }
 }

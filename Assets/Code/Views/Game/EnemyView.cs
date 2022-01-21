@@ -9,6 +9,7 @@ namespace Code.Views
     {
         [SerializeField] private TurretView _turretView;
         [SerializeField] private TMP_Text _healthText;
+        [SerializeField] private GameObject[] _wheels;
         private EntityType _entityType;
         
         public override event Action<int, float> OnDamage;
@@ -20,10 +21,23 @@ namespace Code.Views
         {
             _entityType = entityType;
         }
+        
+        public void UpdateHealthDisplay(float health)
+        {
+            _healthText.text = $"HP: {health}";
+        }
 
         public override void AddDamage(float damage)
         {
             OnDamage?.Invoke(gameObject.GetInstanceID(), damage);
+        }
+        
+        public void RotateWheels(Vector3 value)
+        {
+            for (var i = 0; i < _wheels.Length; i++)
+            {
+                _wheels[i].transform.Rotate(value);
+            }
         }
     }
 }

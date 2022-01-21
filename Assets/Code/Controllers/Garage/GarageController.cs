@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Code.Configs;
 using Code.Configs.Items;
+using Code.Enums;
 using Code.Models;
-using Code.States;
 using Code.Utils;
 using Code.Views;
 using UnityEngine;

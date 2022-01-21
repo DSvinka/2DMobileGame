@@ -1,4 +1,4 @@
-﻿namespace Code.Types
+﻿namespace Code.Enums
 {
     public enum RewardType
     {
