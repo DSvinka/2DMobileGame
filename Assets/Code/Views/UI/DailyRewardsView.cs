@@ -11,6 +11,7 @@ namespace Code.Views.UI
     public sealed class DailyRewardsView: MonoBehaviour
     {
         [SerializeField] private TMP_Text _timerNewReward;
+        [SerializeField] private Slider _timerSlider;
         [SerializeField] private Transform _gridSlotsReward;
 
         [SerializeField] private SlotRewardView _slotRewardViewPrefab;
@@ -19,6 +20,7 @@ namespace Code.Views.UI
         [SerializeField] private Button _closeButton;
 
         public TMP_Text TimerNewReward => _timerNewReward;
+        public Slider TimerSlider => _timerSlider;
         public Transform GridSlotsReward => _gridSlotsReward;
         
         public SlotRewardView SlotRewardViewPrefab => _slotRewardViewPrefab;

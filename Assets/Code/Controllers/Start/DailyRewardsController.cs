@@ -100,11 +100,11 @@ namespace Code.Controllers.Start
             if (_saveRewardModel.TimeToReward.HasValue)
             {
                 var timeSpan = DateTime.UtcNow - _saveRewardModel.TimeToReward.Value;
-                if (timeSpan.Seconds > _settingsRewardConfig.TimeDeadLite)
+                if (timeSpan.TotalSeconds > _settingsRewardConfig.TimeDeadLine)
                 {
                     _saveRewardModel.Delete();
                 }
-                else if (timeSpan.Seconds < _settingsRewardConfig.TimeDeadLite)
+                else if (timeSpan.TotalSeconds < _settingsRewardConfig.TimeDeadLine)
                 {
                     _isGetReward = false;
                 }
@@ -115,6 +115,9 @@ namespace Code.Controllers.Start
 
         private void RefreshUi()
         {
+            _dailyRewardsView.TimerSlider.minValue = 0;
+            _dailyRewardsView.TimerSlider.maxValue = _settingsRewardConfig.TimeCooldown;
+            
             _dailyRewardsView.SetInteractableButton(_isGetReward);
             if (_isGetReward)
             {
@@ -128,6 +131,7 @@ namespace Code.Controllers.Start
                     var currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
                     var timeGetReward = $"Награда через {currentClaimCooldown.Days:D2}:{currentClaimCooldown.Hours:D2}:{currentClaimCooldown.Seconds:D2}";
                     _dailyRewardsView.TimerNewReward.text = timeGetReward;
+                    _dailyRewardsView.TimerSlider.value = (float) currentClaimCooldown.TotalSeconds;
                 }
             }
 

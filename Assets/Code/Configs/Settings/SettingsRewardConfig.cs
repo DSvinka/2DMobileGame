@@ -9,6 +9,6 @@ namespace Code.Configs.Settings
         [SerializeField] private float _timeDeadline = 172800;
 
         public float TimeCooldown => _timeCooldown;
-        public float TimeDeadLite => _timeDeadline;
+        public float TimeDeadLine => _timeDeadline;
     }
 }
