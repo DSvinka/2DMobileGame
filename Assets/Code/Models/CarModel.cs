@@ -51,6 +51,7 @@ namespace Code.Models
         #endregion
 
         public event Action<int> OnDeath;
+        public event Action<int, float> OnDamage;
 
         public CarModel(CarModelConfig config)
         {
@@ -81,9 +82,8 @@ namespace Code.Models
         {
             _health -= damage;
             if (_health <= 0)
-            {
                 OnDeath?.Invoke(_gameObjectID);
-            }
+            OnDamage?.Invoke(_gameObjectID, damage);
         }
 
         public bool CheckCooldown()

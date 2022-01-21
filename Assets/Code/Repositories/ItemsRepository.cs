@@ -11,15 +11,15 @@ namespace Code.Repositories
 
         private Dictionary<int, IItem> _itemsMapByID;
 
-        public ItemsRepository(List<ItemConfig> itemConfigs)
+        public ItemsRepository(ItemsDataSource itemsDataSource)
         {
             _itemsMapByID = new Dictionary<int, IItem>();
-            PopulateItems(itemConfigs);
+            PopulateItems(itemsDataSource);
         }
 
-        private void PopulateItems(List<ItemConfig> itemConfigs)
+        private void PopulateItems(ItemsDataSource itemsDataSource)
         {
-            foreach (var itemConfig in itemConfigs)
+            foreach (var itemConfig in itemsDataSource.ItemConfigs)
             {
                 if (_itemsMapByID.ContainsKey(itemConfig.ID))
                     continue;
@@ -30,13 +30,7 @@ namespace Code.Repositories
 
         private IItem CreateItem(ItemConfig itemConfig)
         {
-            var itemInfo = new ItemInfo()
-            {
-                Title = itemConfig.Title, 
-                Icon = itemConfig.Icon,
-            };
-            
-            return new ItemModel(itemConfig.ID, itemInfo);
+            return new ItemModel(itemConfig.ID, itemConfig.ItemInfo);
         }
 
         protected override void OnDispose()

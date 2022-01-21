@@ -23,6 +23,8 @@ namespace Code.Controllers.Game
         private Transform _enemiesPoolTransform;
         private Transform _bulletsPoolTransform;
 
+        private const int MoneyOnDeath = 35;
+
         public EnemiesController(InputModel inputModel, PlayerProfileModel playerProfileModel)
         {
             _playerProfileModel = playerProfileModel;
@@ -95,12 +97,14 @@ namespace Code.Controllers.Game
 
         private void OnEnemyDeath(int id)
         {
+            _playerProfileModel.SavesRepository.SaveCurrencyModel.CurrencyMoneyCount += MoneyOnDeath;
             DestroyEnemy(id, true);
         }
 
         private void OnEnemyDamage(int id, float damage)
         {
             var entityModel = _enemies[id];
+            
             entityModel.AddDamage(damage);
             entityModel.EntityView.HealthText.text = $"HP: {entityModel.Health}";
         }

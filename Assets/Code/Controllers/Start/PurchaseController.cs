@@ -60,6 +60,11 @@ namespace Code.Controllers.Start
         {
             _playerProfileModel.UnityPurchasingTools.BuyProduct(productID);
         }
+        
+        public void OpenMenu()
+        {
+            _productsMenuView.gameObject.SetActive(true);
+        }
 
         private void CloseMenu()
         {

@@ -1,8 +1,11 @@
 ﻿using System;
+using Code.Configs;
+using Code.Configs.Rewards;
 using Code.Models;
 using Code.States;
 using Code.Utils;
 using Code.Views;
+using Code.Views.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -10,25 +13,31 @@ namespace Code.Controllers.Start
 {
     public sealed class MainMenuController: BaseController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath() { PathResource = "Prefabs/UI/MainMenuUI" };
+        private readonly ResourcePath _viewPath = new ResourcePath() { PathResource = "Prefabs/UI/Menus/MainMenu" };
         private readonly PlayerProfileModel _playerProfileModel;
-        private readonly PurchaseModel _purchaseModel;
-        
+
+        private readonly PurchaseController _purchaseController;
+        private readonly DailyRewardsController _dailyRewardsController;
+
         private readonly MainMenuView _mainMenuView;
+        private readonly DailyRewardsView _dailyRewardsView;
         private readonly ProductsMenuView _productsMenuView;
         
-        public MainMenuController(Transform spawnUIPosition, PlayerProfileModel playerProfileModel, PurchaseModel purchaseModel)
+        public MainMenuController(Transform spawnUIPosition, PlayerProfileModel playerProfileModel, DataSources dataSources, PurchaseModel purchaseModel)
         {
             _playerProfileModel = playerProfileModel;
-            _purchaseModel = purchaseModel;
 
             _mainMenuView = LoadView(spawnUIPosition);
             _productsMenuView = _mainMenuView.ProductsMenuView;
+            _dailyRewardsView = _mainMenuView.DailyRewardsView;
             
-            var carController = new PurchaseController(_productsMenuView, playerProfileModel, purchaseModel);
-            AddController(carController);
+            _purchaseController = new PurchaseController(_mainMenuView.ProductsMenuView, playerProfileModel, purchaseModel);
+            AddController(_purchaseController);
 
-            _mainMenuView.Init(StartGame, DonateMenu);
+            _dailyRewardsController = new DailyRewardsController(_mainMenuView.DailyRewardsView, playerProfileModel, dataSources);
+            AddController(_dailyRewardsController);
+
+            _mainMenuView.Init(StartGame, OpenDonateMenu, OpenDailyRewardsMenu);
         }
 
         private MainMenuView LoadView(Transform spawnUIPosition)
@@ -50,12 +59,16 @@ namespace Code.Controllers.Start
             //_playerProfileModel.AdsShower.ShowBanner();
         }
         
-        private void DonateMenu()
+        private void OpenDonateMenu()
         {
-            var menuGameObject = _productsMenuView.gameObject;
-            
-            menuGameObject.SetActive(!menuGameObject.activeSelf);
+            _purchaseController.OpenMenu();
             _playerProfileModel.AnalyticsTools.SendMessage("donateMenuOpened", ("time", Time.realtimeSinceStartup));
+        }
+        
+        private void OpenDailyRewardsMenu()
+        {
+            _dailyRewardsController.OpenMenu();
+            _playerProfileModel.AnalyticsTools.SendMessage("dailyRewardsMenuOpened", ("time", Time.realtimeSinceStartup));
         }
     }
 }

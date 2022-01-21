@@ -22,6 +22,7 @@ namespace Code.Interfaces.Models
         public float ShotCooldown { get; }
 
         public event Action<int> OnDeath;
+        public event Action<int, float> OnDamage;
 
         public void SetEntityView(T entityView);
         public void AddDamage(float damage);
