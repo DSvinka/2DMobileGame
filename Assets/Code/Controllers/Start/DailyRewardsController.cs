@@ -47,15 +47,21 @@ namespace Code.Controllers.Start
 
         public void OpenMenu()
         {
+            _dailyRewardsView.transform.localScale = Vector3.zero;
+            
             _dailyRewardsView.gameObject.SetActive(true);
             _dailyRewardsView.StartCoroutine(RewardsStartUpdate());
+            _dailyRewardsView.transform.DOScale(1f, 0.5f);
 
         }
 
         public void CloseMenu()
         {
-            _dailyRewardsView.gameObject.SetActive(false);
-            _dailyRewardsView.StopCoroutine(RewardsStartUpdate());
+            _dailyRewardsView.transform.DOScale(0f, 0.5f).OnComplete(() =>
+            {
+                _dailyRewardsView.gameObject.SetActive(false);
+                _dailyRewardsView.StopCoroutine(RewardsStartUpdate());
+            });
         }
 
         private void ClaimReward()

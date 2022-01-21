@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Code.Views
+namespace Code.Views.UI
 {
     public sealed class InventoryView: MonoBehaviour
     {

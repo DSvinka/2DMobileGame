@@ -2,9 +2,9 @@
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Code.Views
+namespace Code.Views.UI
 {
-    public sealed class ProductsMenuView: MonoBehaviour
+    public sealed class PurchaseMenuView: MonoBehaviour
     {
         [SerializeField] private ProductView[] _productViews;
         [SerializeField] private Button _closeButton;

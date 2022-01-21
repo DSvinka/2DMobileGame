@@ -6,14 +6,14 @@ namespace Code.Views.UI
 {
     public sealed class MainMenuView: MonoBehaviour
     {
-        [SerializeField] private ProductsMenuView _productsMenuView;
+        [SerializeField] private PurchaseMenuView _purchaseMenuView;
         [SerializeField] private DailyRewardsView _dailyRewardsView;
         
         [SerializeField] private Button _buttonStart;
         [SerializeField] private Button _buttonDonate;
         [SerializeField] private Button _buttonDailyRewards;
 
-        public ProductsMenuView ProductsMenuView => _productsMenuView;
+        public PurchaseMenuView PurchaseMenuView => _purchaseMenuView;
         public DailyRewardsView DailyRewardsView => _dailyRewardsView;
 
         public void Init(UnityAction startGameAction, UnityAction openDonateAction, UnityAction openDailyRewardsAction)

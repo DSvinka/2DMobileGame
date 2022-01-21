@@ -21,17 +21,17 @@ namespace Code.Controllers.Start
 
         private readonly MainMenuView _mainMenuView;
         private readonly DailyRewardsView _dailyRewardsView;
-        private readonly ProductsMenuView _productsMenuView;
+        private readonly PurchaseMenuView _purchaseMenuView;
         
         public MainMenuController(Transform spawnUIPosition, PlayerProfileModel playerProfileModel, DataSources dataSources, PurchaseModel purchaseModel)
         {
             _playerProfileModel = playerProfileModel;
 
             _mainMenuView = LoadView(spawnUIPosition);
-            _productsMenuView = _mainMenuView.ProductsMenuView;
+            _purchaseMenuView = _mainMenuView.PurchaseMenuView;
             _dailyRewardsView = _mainMenuView.DailyRewardsView;
             
-            _purchaseController = new PurchaseController(_mainMenuView.ProductsMenuView, playerProfileModel, purchaseModel);
+            _purchaseController = new PurchaseController(_mainMenuView.PurchaseMenuView, playerProfileModel, purchaseModel);
             AddController(_purchaseController);
 
             _dailyRewardsController = new DailyRewardsController(_mainMenuView.DailyRewardsView, playerProfileModel, dataSources);

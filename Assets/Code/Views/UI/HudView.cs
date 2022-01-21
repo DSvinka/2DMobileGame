@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace Code.Views
+namespace Code.Views.UI
 {
     public sealed class HudView: MonoBehaviour
     {
