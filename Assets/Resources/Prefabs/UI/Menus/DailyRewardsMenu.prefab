@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 3192891924070775590}
   - component: {fileID: 9130748200488719777}
   - component: {fileID: 6359328118506517918}
-  - component: {fileID: 4628633592592000961}
+  - component: {fileID: 2589645386544933049}
   m_Layer: 0
   m_Name: Button Get Reward
   m_TagString: Untagged
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4628633592592000961
+--- !u!114 &2589645386544933049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 911919611378421795}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: e7f88b3675a843438becf6b988f6575a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -181,6 +181,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _animationButtonType: 2
+  _duration: 0.5
+  _strength: -0.5
 --- !u!1 &1229714782771018677
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +602,7 @@ MonoBehaviour:
   _timerSlider: {fileID: 2720006766249894383}
   _gridSlotsReward: {fileID: 636093488679583606}
   _slotRewardViewPrefab: {fileID: -2785448072166750503, guid: 980e386bd59ad8a408213c8e6d4142c8, type: 3}
-  _getRewardButton: {fileID: 4628633592592000961}
+  _getRewardButton: {fileID: 2589645386544933049}
   _closeButton: {fileID: 6812944370568837711}
 --- !u!1 &5117578744663654586
 GameObject:

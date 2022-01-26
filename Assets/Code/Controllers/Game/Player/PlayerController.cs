@@ -1,5 +1,5 @@
-﻿using Code.Models;
-using Code.States;
+﻿using Code.Enums;
+using Code.Models;
 using UnityEngine;
 
 namespace Code.Controllers.Game.Player
@@ -22,19 +22,17 @@ namespace Code.Controllers.Game.Player
             AddController(carController);
             
             _playerProfileModel.CurrentCarModel.OnDeath += OnPlayerDeath;
-            _playerProfileModel.CurrentCarModel.OnDamage += OnPlayerDamage;
         }
-        
+
+        protected override void OnDispose()
+        {
+            _playerProfileModel.CurrentCarModel.OnDeath -= OnPlayerDeath;
+        }
+
         private void OnPlayerDeath(int id)
         {
             Debug.Log("Вы погибли!");
             _playerProfileModel.CurrentGameState.Value = GameState.Start;
-        }
-        
-        private void OnPlayerDamage(int id, float damage)
-        {
-            var carModel = _playerProfileModel.CurrentCarModel;
-            carModel.EntityView.HealthText.text = $"HP: {carModel.Health}";
         }
     }
 }

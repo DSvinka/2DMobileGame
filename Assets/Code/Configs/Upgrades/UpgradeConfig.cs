@@ -1,5 +1,5 @@
 ﻿using Code.Configs.Items;
-using Code.Types;
+using Code.Enums;
 using UnityEngine;
 
 namespace Code.Configs.Upgrades

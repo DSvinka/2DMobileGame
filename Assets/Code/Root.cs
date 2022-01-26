@@ -4,8 +4,8 @@ using Code.Configs;
 using Code.Configs.Items;
 using Code.Configs.Upgrades;
 using Code.Controllers;
+using Code.Enums;
 using Code.Models;
-using Code.States;
 using UnityEngine;
 using UnityEngine.Purchasing;
 

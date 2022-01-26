@@ -1,4 +1,4 @@
-﻿namespace Code.States
+﻿namespace Code.Enums
 {
     public enum GameState
     {

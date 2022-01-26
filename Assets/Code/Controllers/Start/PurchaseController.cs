@@ -1,30 +1,33 @@
 ﻿using Code.Models;
 using Code.Utils;
 using Code.Views;
+using Code.Views.UI;
+using DG.Tweening;
+using UnityEngine;
 using UnityEngine.Purchasing;
 
 namespace Code.Controllers.Start
 {
     public sealed class PurchaseController: BaseController
     {
-        private ProductsMenuView _productsMenuView;
+        private PurchaseMenuView _purchaseMenuView;
         
         private PlayerProfileModel _playerProfileModel;
         private PurchaseModel _purchaseModel;
         
-        public PurchaseController(ProductsMenuView productsMenuView, PlayerProfileModel playerProfileModel, PurchaseModel purchaseModel)
+        public PurchaseController(PurchaseMenuView purchaseMenuView, PlayerProfileModel playerProfileModel, PurchaseModel purchaseModel)
         {
             _purchaseModel = purchaseModel;
             _playerProfileModel = playerProfileModel;
-            _productsMenuView = productsMenuView;
+            _purchaseMenuView = purchaseMenuView;
             
-            _productsMenuView.Init(CloseMenu);
+            _purchaseMenuView.Init(CloseMenu);
             _playerProfileModel.UnityPurchasingTools.OnPurchase += OnPurchase;
 
             InitPurchasingTools();
             InitPurchasingMenu();
             
-            AddGameObject(_productsMenuView.gameObject);
+            AddGameObject(_purchaseMenuView.gameObject);
         }
 
         // TODO: Добавить создание карточек для продуктов
@@ -32,10 +35,10 @@ namespace Code.Controllers.Start
         {
             for (var i = 0; i < _purchaseModel.Products.Length; i++)
             {
-                if (i >= _productsMenuView.ProductViews.Length) break;
+                if (i >= _purchaseMenuView.ProductViews.Length) break;
                 
                 var product = _purchaseModel.Products[i];
-                _productsMenuView.ProductViews[i].Init(delegate { DonateBuy(product.ID); }, product.Title, product.Description, product.PriceRubles, product.ID);
+                _purchaseMenuView.ProductViews[i].Init(delegate { DonateBuy(product.ID); }, product.Title, product.Description, product.PriceRubles, product.ID);
             }
         }
 
@@ -63,12 +66,18 @@ namespace Code.Controllers.Start
         
         public void OpenMenu()
         {
-            _productsMenuView.gameObject.SetActive(true);
+            _purchaseMenuView.transform.localScale = Vector3.zero;
+            
+            _purchaseMenuView.gameObject.SetActive(true);
+            _purchaseMenuView.transform.DOScale(1f, 0.5f);
         }
 
         private void CloseMenu()
         {
-            _productsMenuView.gameObject.SetActive(false);
+            _purchaseMenuView.transform.DOScale(0f, 0.5f).OnComplete(() =>
+            {
+                _purchaseMenuView.gameObject.SetActive(false);
+            });
         }
         
         private void OnPurchase(Product product)

@@ -16,3 +16,4 @@ MonoBehaviour:
   _rewardsDataSource: {fileID: 11400000, guid: aba7ad9392b41ba409fef06113f543f9, type: 2}
   _settingsDataSource: {fileID: 11400000, guid: c695c198150fa81459baaa9cd116f227, type: 2}
   _upgradesDataSource: {fileID: 11400000, guid: cf3dca41d73d2f249a393f52873acb57, type: 2}
+  _enemiesDataSource: {fileID: 11400000, guid: 94121e1bb621fa74e99644529664b1b9, type: 2}

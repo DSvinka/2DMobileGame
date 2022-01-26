@@ -1,5 +1,5 @@
 ﻿using System;
-using Code.Types;
+using Code.Enums;
 using TMPro;
 using UnityEngine;
 

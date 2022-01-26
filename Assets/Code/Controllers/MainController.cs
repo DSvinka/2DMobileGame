@@ -3,8 +3,8 @@ using Code.Configs.Items;
 using Code.Controllers.Game;
 using Code.Controllers.Garage;
 using Code.Controllers.Start;
+using Code.Enums;
 using Code.Models;
-using Code.States;
 using UnityEngine;
 
 namespace Code.Controllers
@@ -67,7 +67,7 @@ namespace Code.Controllers
                 case GameState.Game:
                     _playerProfileModel.Reset();
                     
-                    _gameController = new GameController(_placeForUi, _playerProfileModel, _camera);
+                    _gameController = new GameController(_placeForUi, _playerProfileModel, _dataSources, _camera);
                     _mainMenuController?.Dispose();
                     _garageController?.Dispose();
                     break;

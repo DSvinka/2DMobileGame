@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Code.Views
+namespace Code.Views.UI
 {
     public sealed class ProductView: MonoBehaviour
     {

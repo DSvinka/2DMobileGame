@@ -1,4 +1,4 @@
-﻿using Code.Types;
+﻿using Code.Enums;
 using UnityEngine;
 
 namespace Code.Configs.Rewards

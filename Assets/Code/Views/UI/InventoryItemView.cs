@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Code.Views
+namespace Code.Views.UI
 {
     public sealed class InventoryItemView : MonoBehaviour
     {

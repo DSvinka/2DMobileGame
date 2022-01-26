@@ -1,4 +1,5 @@
-﻿using Code.Controllers.Game.Player;
+﻿using Code.Configs;
+using Code.Controllers.Game.Player;
 using Code.Models;
 using Code.Properties;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace Code.Controllers.Game
 {
     public class GameController : BaseController
     {
-        public GameController(Transform placeForUi, PlayerProfileModel playerProfileModel, Camera camera)
+        public GameController(Transform placeForUi, PlayerProfileModel playerProfileModel, DataSources dataSources, Camera camera)
         {
             var touchPosition = new SubscribeProperty<Vector2>();
             var moveUpdate = new SubscribeProperty<float>();
@@ -17,7 +18,7 @@ namespace Code.Controllers.Game
             var backgroundController = new BackgroundController(inputModel, playerProfileModel);
             AddController(backgroundController);
 
-            var enemiesController = new EnemiesController(inputModel, playerProfileModel);
+            var enemiesController = new EnemiesController(inputModel, playerProfileModel, dataSources.EnemiesDataSource);
             AddController(enemiesController);
 
             var inputGameController = new InputGameController(inputModel, playerProfileModel);

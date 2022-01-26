@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 70}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &5995846191549987611
 MonoBehaviour:
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_ChildAlignment: 5
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 270, y: 70}
+  m_CellSize: {x: 250, y: 50}
   m_Spacing: {x: 20, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 1
@@ -288,7 +288,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7204684804642736791, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
       propertyPath: m_fontSize
-      value: 59.7
+      value: 42.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412843550072552849, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412843550072552849, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
@@ -417,7 +425,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7204684804642736791, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
       propertyPath: m_fontSize
-      value: 59.7
+      value: 42.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412843550072552849, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412843550072552849, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
@@ -538,7 +554,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7204684804642736791, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
       propertyPath: m_fontSize
-      value: 59.7
+      value: 42.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412843550072552849, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412843550072552849, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}

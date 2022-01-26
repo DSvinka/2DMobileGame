@@ -1,7 +1,7 @@
 ﻿using Code.Analytics;
+using Code.Enums;
 using Code.Properties;
 using Code.Repositories;
-using Code.States;
 
 namespace Code.Models
 {

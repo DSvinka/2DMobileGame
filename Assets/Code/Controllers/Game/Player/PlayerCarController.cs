@@ -2,7 +2,6 @@
 using Code.Enums;
 using Code.Models;
 using Code.Properties;
-using Code.States;
 using Code.Utils;
 using Code.Views;
 using UnityEngine;
@@ -29,8 +28,8 @@ namespace Code.Controllers.Game.Player
             _playerCarView.OnDamage += OnDamage;
 
             _playerProfileModel.CurrentCarModel.SetEntityView(_playerCarView);
-            
-            _playerCarView.HealthText.text = $"HP: {_playerProfileModel.CurrentCarModel.Health}";
+
+            _playerCarView.UpdateHealthDisplay(_playerProfileModel.CurrentCarModel.Health);
 
             var turretController = new PlayerTurretController(inputModel, camera, _playerProfileModel);
             AddController(turretController);
@@ -45,7 +44,9 @@ namespace Code.Controllers.Game.Player
 
         private void OnDamage(int id, float damage)
         {
-            _playerProfileModel.CurrentCarModel.AddDamage(damage);
+            var carModel = _playerProfileModel.CurrentCarModel;
+            carModel.AddDamage(damage);
+            _playerCarView.UpdateHealthDisplay(carModel.Health);
         }
 
         private PlayerCarView LoadView()
