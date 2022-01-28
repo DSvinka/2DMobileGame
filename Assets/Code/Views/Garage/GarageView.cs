@@ -3,14 +3,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Code.Views
+namespace Code.Views.Garage
 {
     public sealed class GarageView : MonoBehaviour
     {
-        [SerializeField] private InventoryView _inventory;
+        [SerializeField] private UpgradesView _upgradeMenuView;
         [SerializeField] private Button _exitButton;
 
-        public InventoryView Inventory => _inventory;
+        public UpgradesView UpgradeMenuView => _upgradeMenuView;
 
         public void Init(UnityAction exitAction)
         {

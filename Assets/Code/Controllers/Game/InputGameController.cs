@@ -1,8 +1,6 @@
 ﻿using System;
 using Code.Models;
-using Code.Properties;
 using Code.Utils;
-using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Code.Controllers.Game

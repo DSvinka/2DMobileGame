@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Code.Configs.Rewards;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;

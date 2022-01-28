@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using Code.Configs;
-using Code.Configs.Items;
 using Code.Enums;
 using Code.Models;
 using Code.Utils;
 using Code.Views;
+using Code.Views.Garage;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -23,8 +22,8 @@ namespace Code.Controllers.Garage
             _garageView.Init(OnExitButton);
             _playerProfileModel = playerProfileModel;
 
-            var inventoryController = new InventoryController(_garageView, dataSources);
-            inventoryController.LoadInventory();
+            var inventoryController = new UpgradesController(_garageView, playerProfileModel, dataSources);
+            inventoryController.Load();
             AddController(inventoryController);
         }
         

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Code.Enums;
 using Code.Interfaces.Models;
 using Code.Utils;
 using Code.Views;
@@ -11,6 +14,8 @@ namespace Code.Models
         public ResourcePath ResourcePath = new ResourcePath() { PathResource = "Prefabs/Cars/Car" };
 
         #region Поля
+
+        private Dictionary<UpgradeType, IUpgradeModel> _upgrades;
 
         private PlayerCarView _playerCarView;
         private GameObject _gameObject;
@@ -31,6 +36,8 @@ namespace Code.Models
         #endregion
 
         #region Свойства
+        
+        public IReadOnlyDictionary<UpgradeType, IUpgradeModel> Upgrades => _upgrades;
 
         public PlayerCarView EntityView => _playerCarView;
         public GameObject GameObject => _gameObject;
@@ -55,6 +62,7 @@ namespace Code.Models
 
         public CarModel(CarModelConfig config)
         {
+            _upgrades = new Dictionary<UpgradeType, IUpgradeModel>(4);
             if (config.EntityView != null)
                 SetEntityView(config.EntityView);
 
@@ -97,6 +105,58 @@ namespace Code.Models
         public void ResetCooldown()
         {
             _shotCooldown = _shotRate;
+        }
+
+        public void SetUpgrade(IUpgradeModel upgrade)
+        {
+            if (_upgrades.ContainsKey(upgrade.UpgradeType))
+                RemoveUpgrade(upgrade);
+            
+            switch(upgrade.UpgradeType)
+            {
+                case UpgradeType.Health:
+                    _health += upgrade.ValueUpgrade;
+                    break;
+                case UpgradeType.Damage:
+                    _bulletDamage += upgrade.ValueUpgrade;
+                    break;
+                case UpgradeType.ShotRate:
+                    _shotRate += upgrade.ValueUpgrade;
+                    break;
+                case UpgradeType.ShotForce:
+                    _bulletShotForce += upgrade.ValueUpgrade;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            _upgrades.Add(upgrade.UpgradeType, upgrade);
+        }
+        
+        public void RemoveUpgrade(IUpgradeModel upgrade)
+        {
+            if (!_upgrades.ContainsKey(upgrade.UpgradeType))
+                return;
+                    
+            switch(upgrade.UpgradeType)
+            {
+                case UpgradeType.Health:
+                    _health -= upgrade.ValueUpgrade;
+                    break;
+                case UpgradeType.Damage:
+                    _bulletDamage -= upgrade.ValueUpgrade;
+                    break;
+                case UpgradeType.ShotRate:
+                    _shotRate -= upgrade.ValueUpgrade;
+                    break;
+                case UpgradeType.ShotForce:
+                    _bulletShotForce -= upgrade.ValueUpgrade;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            _upgrades.Remove(upgrade.UpgradeType);
         }
     }
     

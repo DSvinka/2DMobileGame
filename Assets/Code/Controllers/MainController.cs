@@ -1,5 +1,4 @@
 ﻿using Code.Configs;
-using Code.Configs.Items;
 using Code.Controllers.Game;
 using Code.Controllers.Garage;
 using Code.Controllers.Start;
@@ -20,13 +19,11 @@ namespace Code.Controllers
         private readonly Transform _placeForUi;
         private readonly DataSources _dataSources;
         private readonly PlayerProfileModel _playerProfileModel;
-        private readonly PurchaseModel _purchaseModel;
 
         // Вынести параметры в отдельный struct.
-        public MainController(Transform placeForUi, PlayerProfileModel playerProfileModel, DataSources dataSources, Camera camera, PurchaseModel purchaseModel)
+        public MainController(Transform placeForUi, PlayerProfileModel playerProfileModel, DataSources dataSources, Camera camera)
         {
             _dataSources = dataSources;
-            _purchaseModel = purchaseModel;
             _playerProfileModel = playerProfileModel;
             _placeForUi = placeForUi;
             _camera = camera;
@@ -53,7 +50,7 @@ namespace Code.Controllers
             switch (state)
             {
                 case GameState.Start:
-                    _mainMenuController = new MainMenuController(_placeForUi, _playerProfileModel, _dataSources, _purchaseModel);
+                    _mainMenuController = new MainMenuController(_placeForUi, _playerProfileModel, _dataSources);
                     _gameController?.Dispose();
                     _garageController?.Dispose();
                     break;

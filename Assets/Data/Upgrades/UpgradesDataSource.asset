@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: UpgradesDataSource
   m_EditorClassIdentifier: 
   _upgradeConfigs:
-  - {fileID: 11400000, guid: 163f019b6da82a743a26bd311e960f1a, type: 2}
-  - {fileID: 11400000, guid: a27a978e12892f54aa73071044f0d268, type: 2}
+  - {fileID: 11400000, guid: 751cd7530a919674394f2c681bed3c9f, type: 2}
+  - {fileID: 11400000, guid: 8319cc5236bfbab4f85e50c72456de8f, type: 2}
+  - {fileID: 11400000, guid: a94cbb49eb274b94cabc6cf48ffde6a6, type: 2}
+  - {fileID: 11400000, guid: f1960c57fe780a042a4c914667f4257f, type: 2}

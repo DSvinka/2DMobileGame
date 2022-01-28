@@ -1,5 +1,4 @@
-﻿using Code.Interfaces.Properties;
-using Code.Models;
+﻿using Code.Models;
 using Code.Properties;
 using Code.Utils;
 using Code.Views;

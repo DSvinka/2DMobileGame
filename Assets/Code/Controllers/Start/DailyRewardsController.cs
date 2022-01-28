@@ -7,6 +7,7 @@ using Code.Configs.Settings;
 using Code.Enums;
 using Code.Models;
 using Code.Repositories;
+using Code.Repositories.Models;
 using Code.Views.UI;
 using DG.Tweening;
 using UnityEngine;
@@ -21,7 +22,7 @@ namespace Code.Controllers.Start
         private readonly RewardConfig[] _rewardConfigs;
 
         private readonly SavesRepository _savesRepository;
-        private readonly SaveRewardModel _saveRewardModel;
+        private readonly RewardSaveModel _rewardSaveModel;
         
         private readonly PlayerProfileModel _playerProfileModel;
         
@@ -38,7 +39,7 @@ namespace Code.Controllers.Start
             _slots = new List<SlotRewardView>();
             
             _savesRepository = _playerProfileModel.SavesRepository;
-            _saveRewardModel = _savesRepository.SaveRewardModel;
+            _rewardSaveModel = _savesRepository.RewardSaveModel;
             AddController(_savesRepository);
 
             InitSlots();
@@ -69,25 +70,25 @@ namespace Code.Controllers.Start
             if (!_isGetReward)
                 return;
 
-            var reward = _rewardConfigs[_savesRepository.SaveRewardModel.CurrentRewardSlot];
+            var reward = _rewardConfigs[_savesRepository.RewardSaveModel.CurrentRewardSlot];
 
             switch (reward.RewardType)
             {
                 case RewardType.Wood:
-                    _savesRepository.SaveCurrencyModel.CurrencyWoodCount = reward.CountCurrency;
+                    _savesRepository.CurrencySaveModel.CurrencyWoodCount += reward.CountCurrency;
                     break;
                 case RewardType.Metal:
-                    _savesRepository.SaveCurrencyModel.CurrencyMetalCount = reward.CountCurrency;
+                    _savesRepository.CurrencySaveModel.CurrencyMetalCount += reward.CountCurrency;
                     break;
                 case RewardType.Money:
-                    _savesRepository.SaveCurrencyModel.CurrencyMoneyCount = reward.CountCurrency;
+                    _savesRepository.CurrencySaveModel.CurrencyMoneyCount += reward.CountCurrency;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(reward.RewardType), reward.RewardType, null);
             }
 
-            _saveRewardModel.CurrentRewardSlot = (_savesRepository.SaveRewardModel.CurrentRewardSlot + 1) % _rewardConfigs.Length;
-            _saveRewardModel.TimeToReward = DateTime.UtcNow;
+            _rewardSaveModel.CurrentRewardSlot = (_savesRepository.RewardSaveModel.CurrentRewardSlot + 1) % _rewardConfigs.Length;
+            _rewardSaveModel.TimeToReward = DateTime.UtcNow;
             
             RefreshRewardsState();
         }
@@ -105,12 +106,12 @@ namespace Code.Controllers.Start
         private void RefreshRewardsState()
         {
             _isGetReward = true;
-            if (_saveRewardModel.TimeToReward.HasValue)
+            if (_rewardSaveModel.TimeToReward.HasValue)
             {
-                var timeSpan = DateTime.UtcNow - _saveRewardModel.TimeToReward.Value;
+                var timeSpan = DateTime.UtcNow - _rewardSaveModel.TimeToReward.Value;
                 if (timeSpan.TotalSeconds > _settingsRewardConfig.TimeDeadLine)
                 {
-                    _saveRewardModel.Delete();
+                    _rewardSaveModel.Delete();
                 }
                 else if (timeSpan.TotalSeconds < _settingsRewardConfig.TimeDeadLine)
                 {
@@ -133,9 +134,9 @@ namespace Code.Controllers.Start
             }
             else
             {
-                if (_saveRewardModel.TimeToReward.HasValue)
+                if (_rewardSaveModel.TimeToReward.HasValue)
                 {
-                    var nextClaimTime = _saveRewardModel.TimeToReward.Value.AddSeconds(_settingsRewardConfig.TimeCooldown);
+                    var nextClaimTime = _rewardSaveModel.TimeToReward.Value.AddSeconds(_settingsRewardConfig.TimeCooldown);
                     var currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
                     var timeGetReward = $"Награда через {currentClaimCooldown.Days:D2}:{currentClaimCooldown.Hours:D2}:{currentClaimCooldown.Seconds:D2}";
                     _dailyRewardsView.TimerNewReward.text = timeGetReward;
@@ -145,7 +146,7 @@ namespace Code.Controllers.Start
 
             for (var i = 0; i < _slots.Count; i++)
             {
-                _slots[i].SetData(_rewardConfigs[i], i + 1, i == _saveRewardModel.CurrentRewardSlot);
+                _slots[i].SetData(_rewardConfigs[i], i + 1, i == _rewardSaveModel.CurrentRewardSlot);
             }
         }
 

@@ -1,5 +1,4 @@
 ﻿using Code.Models;
-using Code.Properties;
 using JoostenProductions;
 using UnityEngine;
 

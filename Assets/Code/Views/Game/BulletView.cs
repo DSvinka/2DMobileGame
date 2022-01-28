@@ -1,5 +1,4 @@
-﻿using System;
-using Code.Enums;
+﻿using Code.Enums;
 using UnityEngine;
 
 namespace Code.Views

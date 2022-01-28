@@ -2,8 +2,9 @@
 {
     public enum UpgradeType
     {
-        None = 0,
-        Speed = 1,
-        Control = 2,
+        Health = 1,
+        Damage = 2,
+        ShotRate = 3,
+        ShotForce = 4,
     }
 }

@@ -12,8 +12,8 @@ namespace Code.Controllers.Game.Player
     public sealed class PlayerCarController: BaseController
     {
         private readonly ResourcePath _viewPath;
-        private readonly PlayerProfileModel _playerProfileModel;
         private readonly PlayerCarView _playerCarView;
+        private readonly PlayerProfileModel _playerProfileModel;
         private readonly SubscribeProperty<float> _moveUpdate;
 
         public PlayerCarController(InputModel inputModel, PlayerProfileModel playerProfileModel, Camera camera)
@@ -28,6 +28,7 @@ namespace Code.Controllers.Game.Player
             _playerCarView.OnDamage += OnDamage;
 
             _playerProfileModel.CurrentCarModel.SetEntityView(_playerCarView);
+            _playerProfileModel.SetupUpgrades();
 
             _playerCarView.UpdateHealthDisplay(_playerProfileModel.CurrentCarModel.Health);
 

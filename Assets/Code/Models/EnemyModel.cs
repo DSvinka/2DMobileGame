@@ -1,9 +1,6 @@
 ﻿using System;
 using Code.Configs.Enemies;
-using Code.Enums;
-using Code.Interfaces.Models;
 using Code.Views;
-using UnityEditor;
 using UnityEngine;
 
 namespace Code.Models

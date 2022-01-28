@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: SettingsDataSource
   m_EditorClassIdentifier: 
   _settingsRewardConfig: {fileID: 11400000, guid: d98625054530da24fba3435cf930c78d, type: 2}
+  _settingsPlayerConfig: {fileID: 11400000, guid: 0b2a7092a154d804e9cd3911a457762e, type: 2}

@@ -6,27 +6,25 @@ namespace Code.Views.UI
 {
     public sealed class MainMenuView: MonoBehaviour
     {
-        [SerializeField] private PurchaseMenuView _purchaseMenuView;
         [SerializeField] private DailyRewardsView _dailyRewardsView;
         
         [SerializeField] private Button _buttonStart;
-        [SerializeField] private Button _buttonDonate;
+        [SerializeField] private Button _buttonExit;
         [SerializeField] private Button _buttonDailyRewards;
-
-        public PurchaseMenuView PurchaseMenuView => _purchaseMenuView;
+        
         public DailyRewardsView DailyRewardsView => _dailyRewardsView;
 
-        public void Init(UnityAction startGameAction, UnityAction openDonateAction, UnityAction openDailyRewardsAction)
+        public void Init(UnityAction startGameAction, UnityAction exitGameAction, UnityAction openDailyRewardsAction)
         {
             _buttonStart.onClick.AddListener(startGameAction);
-            _buttonDonate.onClick.AddListener(openDonateAction);
+            _buttonExit.onClick.AddListener(exitGameAction);
             _buttonDailyRewards.onClick.AddListener(openDailyRewardsAction);
         }
 
         private void OnDestroy()
         {
             _buttonStart.onClick.RemoveAllListeners();
-            _buttonDonate.onClick.RemoveAllListeners();
+            _buttonExit.onClick.RemoveAllListeners();
             _buttonDailyRewards.onClick.RemoveAllListeners();
         }
     }

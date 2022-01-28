@@ -1,13 +1,9 @@
-﻿using System.Linq;
-using Code.Analytics;
+﻿using Code.Analytics;
 using Code.Configs;
-using Code.Configs.Items;
-using Code.Configs.Upgrades;
 using Code.Controllers;
 using Code.Enums;
 using Code.Models;
 using UnityEngine;
-using UnityEngine.Purchasing;
 
 namespace Code
 {
@@ -24,17 +20,10 @@ namespace Code
 
         private void Awake()
         {
-            var products = new ProductConf[]
-            {
-                new ProductConf("green_car", "Зелёная Машина", "Машина с зелёным цветом", 200, ProductType.Consumable)
-            };
-                
-            var purchaseModel = new PurchaseModel(products);
-            var playerProfileModel = new PlayerProfileModel(15f, _unityAdsTools, _unityPurchasingTools);
-            
+            var playerProfileModel = new PlayerProfileModel(15f, _dataSources, _unityAdsTools, _unityPurchasingTools);
             playerProfileModel.CurrentGameState.Value = GameState.Start;
             
-            _mainController = new MainController(_uiPoint, playerProfileModel, _dataSources, _camera, purchaseModel);
+            _mainController = new MainController(_uiPoint, playerProfileModel, _dataSources, _camera);
         }
 
         private void OnDestroy()
