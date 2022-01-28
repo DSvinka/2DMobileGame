@@ -63,16 +63,16 @@ namespace Code.Controllers.Game
 
         private void SetupEnemies()
         {
-            var playerSaveCarModel = _playerProfileModel.SavesRepository.SaveCarModel;
             foreach (var enemyConfig in _enemiesDataSource.EnemyConfigs)
             {
+                var carModel = _playerProfileModel.CurrentCarModel;
                 var enemy = CreateEnemy(enemyConfig.EnemyView);
                 enemy.Init(EntityType.Enemy);
                 enemy.OnDamage += OnEnemyDamage;
 
                 var enemyModel = new EnemyModel(enemyConfig, enemy);
                 enemyModel.OnDeath += OnEnemyDeath;
-                enemyModel.SetPlayerStats(playerSaveCarModel.Health, playerSaveCarModel.BulletDamage);
+                enemyModel.SetPlayerStats(carModel.Health, carModel.BulletDamage);
                 
                 enemy.UpdateHealthDisplay(enemyModel.Health);
                 _enemies.Add(enemy.gameObject.GetInstanceID(), enemyModel);
@@ -105,7 +105,7 @@ namespace Code.Controllers.Game
         {
             var entityModel = _enemies[id];
             
-            _playerProfileModel.SavesRepository.SaveCurrencyModel.CurrencyMoneyCount += entityModel.Config.GiveMoneyOnDeath;
+            _playerProfileModel.SavesRepository.CurrencySaveModel.CurrencyMoneyCount += entityModel.Config.GiveMoneyOnDeath;
             DestroyEnemy(entityModel, true);
         }
 

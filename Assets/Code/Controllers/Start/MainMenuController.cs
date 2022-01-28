@@ -1,10 +1,8 @@
 ﻿using System;
 using Code.Configs;
-using Code.Configs.Rewards;
 using Code.Enums;
 using Code.Models;
 using Code.Utils;
-using Code.Views;
 using Code.Views.UI;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -15,29 +13,21 @@ namespace Code.Controllers.Start
     {
         private readonly ResourcePath _viewPath = new ResourcePath() { PathResource = "Prefabs/UI/Menus/MainMenu" };
         private readonly PlayerProfileModel _playerProfileModel;
-
-        private readonly PurchaseController _purchaseController;
+        
         private readonly DailyRewardsController _dailyRewardsController;
 
         private readonly MainMenuView _mainMenuView;
-        private readonly DailyRewardsView _dailyRewardsView;
-        private readonly PurchaseMenuView _purchaseMenuView;
-        
-        public MainMenuController(Transform spawnUIPosition, PlayerProfileModel playerProfileModel, DataSources dataSources, PurchaseModel purchaseModel)
+
+        public MainMenuController(Transform spawnUIPosition, PlayerProfileModel playerProfileModel, DataSources dataSources)
         {
             _playerProfileModel = playerProfileModel;
 
             _mainMenuView = LoadView(spawnUIPosition);
-            _purchaseMenuView = _mainMenuView.PurchaseMenuView;
-            _dailyRewardsView = _mainMenuView.DailyRewardsView;
-            
-            _purchaseController = new PurchaseController(_mainMenuView.PurchaseMenuView, playerProfileModel, purchaseModel);
-            AddController(_purchaseController);
 
             _dailyRewardsController = new DailyRewardsController(_mainMenuView.DailyRewardsView, playerProfileModel, dataSources);
             AddController(_dailyRewardsController);
 
-            _mainMenuView.Init(StartGame, OpenDonateMenu, OpenDailyRewardsMenu);
+            _mainMenuView.Init(StartGame, ExitGame, OpenDailyRewardsMenu);
         }
 
         private MainMenuView LoadView(Transform spawnUIPosition)
@@ -59,12 +49,11 @@ namespace Code.Controllers.Start
             //_playerProfileModel.AdsShower.ShowBanner();
         }
         
-        private void OpenDonateMenu()
+        private void ExitGame()
         {
-            _purchaseController.OpenMenu();
-            _playerProfileModel.AnalyticsTools.SendMessage("donateMenuOpened", ("time", Time.realtimeSinceStartup));
+            Application.Quit();
         }
-        
+
         private void OpenDailyRewardsMenu()
         {
             _dailyRewardsController.OpenMenu();

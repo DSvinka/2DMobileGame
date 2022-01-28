@@ -17,7 +17,7 @@ namespace Code.Controllers
         public PlayerCurrencyController(Transform placeForUI, PlayerProfileModel playerProfileModel)
         {
             _playerProfileModel = playerProfileModel;
-            var saveCurrencyModel = _playerProfileModel.SavesRepository.SaveCurrencyModel;
+            var saveCurrencyModel = _playerProfileModel.SavesRepository.CurrencySaveModel;
             saveCurrencyModel.OnCurrencyCountChange += OnCurrencyCountChange;
 
             _playerCurrencyView = LoadView(placeForUI);
@@ -26,7 +26,7 @@ namespace Code.Controllers
 
         protected override void OnDispose()
         {
-            _playerProfileModel.SavesRepository.SaveCurrencyModel.OnCurrencyCountChange -= OnCurrencyCountChange;
+            _playerProfileModel.SavesRepository.CurrencySaveModel.OnCurrencyCountChange -= OnCurrencyCountChange;
         }
         
         private PlayerCurrencyView LoadView(Transform spawnUIPosition)
@@ -42,7 +42,7 @@ namespace Code.Controllers
 
         public void OnCurrencyCountChange(CurrencyType currencyType)
         {
-            var saveCurrencyModel = _playerProfileModel.SavesRepository.SaveCurrencyModel;
+            var saveCurrencyModel = _playerProfileModel.SavesRepository.CurrencySaveModel;
             switch (currencyType)
             {
                 case CurrencyType.Metal:

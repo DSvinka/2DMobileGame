@@ -2,7 +2,7 @@
 
 namespace Code.Configs.Settings
 {
-    [CreateAssetMenu(fileName = "SettingsConfig", menuName = "Configs/Settings/SettingsDataSource")]
+    [CreateAssetMenu(fileName = "SettingsRewardConfig", menuName = "Configs/Settings/SettingsRewardConfig")]
     public sealed class SettingsRewardConfig : ScriptableObject
     {
         [SerializeField] private float _timeCooldown = 86400;

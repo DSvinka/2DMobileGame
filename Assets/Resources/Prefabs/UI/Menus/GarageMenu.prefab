@@ -336,9 +336,9 @@ GameObject:
   - component: {fileID: 3070540047459956297}
   - component: {fileID: 3070540047459956302}
   - component: {fileID: 3070540047459956303}
-  - component: {fileID: 3416224565229393768}
+  - component: {fileID: 3629639480560090207}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3416224565229393768
+--- !u!114 &3629639480560090207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3070540047459956298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7f88b3675a843438becf6b988f6575a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -446,9 +446,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  _animationButtonType: 2
-  _duration: 0.5
-  _strength: -0.5
 --- !u!1 &3070540047593308098
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,8 +907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8702fbb78d8d4bcc86bded5158c0ae23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 6498069640659205071}
-  _exitButton: {fileID: 0}
+  _upgradeMenuView: {fileID: 6498069640659205071}
+  _exitButton: {fileID: 3629639480560090207}
 --- !u!1 &3070540048348352241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,7 +1035,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0075147ab3314c22bc94db499a7fa3bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemsPoint: {fileID: 3070540047593308097}
+  _slotUpgradeViewPrefab: {fileID: 3500565425884054722, guid: e5cd32852bd14634f81478ba7b0456da, type: 3}
+  _gridSlotsUpgrades: {fileID: 3070540047593308097}
 --- !u!1 &3317655554205539274
 GameObject:
   m_ObjectHideFlags: 0

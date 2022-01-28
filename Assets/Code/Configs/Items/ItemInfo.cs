@@ -6,7 +6,10 @@ namespace Code.Configs.Items
     [Serializable]
     public struct ItemInfo
     {
-        public string Title { get; set; }
-        public Sprite Icon { get; set; }
+        [SerializeField] private string _title;
+        [SerializeField] private Sprite _icon;
+
+        public string Title => _title;
+        public Sprite Icon => _icon;
     }
 }
