@@ -4,7 +4,6 @@ using Code.Configs.Settings;
 using Code.Enums;
 using Code.Properties;
 using Code.Repositories;
-using UnityEngine;
 
 namespace Code.Models
 {

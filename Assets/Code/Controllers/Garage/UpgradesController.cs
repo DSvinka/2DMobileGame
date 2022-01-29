@@ -6,8 +6,6 @@ using Code.Interfaces;
 using Code.Interfaces.Models;
 using Code.Models;
 using Code.Repositories;
-using Code.Utils;
-using Code.Views;
 using Code.Views.Garage;
 using Code.Views.UI;
 using UnityEngine;
