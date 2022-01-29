@@ -56,7 +56,7 @@ namespace Code.Controllers.Start
 
         }
 
-        public void CloseMenu()
+        private void CloseMenu()
         {
             _dailyRewardsView.transform.DOScale(0f, 0.5f).OnComplete(() =>
             {
@@ -124,9 +124,6 @@ namespace Code.Controllers.Start
 
         private void RefreshUi()
         {
-            _dailyRewardsView.TimerSlider.minValue = 0;
-            _dailyRewardsView.TimerSlider.maxValue = _settingsRewardConfig.TimeCooldown;
-            
             _dailyRewardsView.SetInteractableButton(_isGetReward);
             if (_isGetReward)
             {
@@ -140,7 +137,7 @@ namespace Code.Controllers.Start
                     var currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
                     var timeGetReward = $"Награда через {currentClaimCooldown.Days:D2}:{currentClaimCooldown.Hours:D2}:{currentClaimCooldown.Seconds:D2}";
                     _dailyRewardsView.TimerNewReward.text = timeGetReward;
-                    _dailyRewardsView.TimerSlider.value = (float) currentClaimCooldown.TotalSeconds;
+                    _dailyRewardsView.TimerSlider.value = (float) (currentClaimCooldown.TotalSeconds / _settingsRewardConfig.TimeCooldown);
                 }
             }
 
