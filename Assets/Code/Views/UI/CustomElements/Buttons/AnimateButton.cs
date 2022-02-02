@@ -17,7 +17,6 @@ namespace Code.Views.UI.CustomElements.Buttons
         [SerializeField] private float _strength = 30f;
         
         private RectTransform _rectTransform;
-        private bool _isSelected;
         private bool _isMove;
 
         protected override void Awake()
@@ -35,18 +34,17 @@ namespace Code.Views.UI.CustomElements.Buttons
 
         private void ActivateAnimation()
         {
+            _isMove = true;
+            
             switch (_animationButtonType)
             {
                 case AnimationButtonType.ChangePosition:
-                    _isMove = true;
                     _rectTransform.DOShakeAnchorPos(_duration, _strength).OnComplete(() => _isMove = false);
                     break;
                 case AnimationButtonType.ChangeRotation:
-                    _isMove = true;
                     _rectTransform.DOShakeRotation(_duration, _strength).OnComplete(() => _isMove = false);;
                     break;
                 case AnimationButtonType.ChangeScale:
-                    _isMove = true;
                     _rectTransform.DOShakeScale(_duration, _strength).OnComplete(() => _isMove = false);;
                     break;
                 default:

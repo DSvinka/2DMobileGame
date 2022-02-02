@@ -2,7 +2,6 @@
 using Code.Configs.Items;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Code.Views.UI

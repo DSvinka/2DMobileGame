@@ -290,6 +290,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 42.65
       objectReference: {fileID: 0}
+    - target: {fileID: 7204684804642736791, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7412843550072552849, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
       propertyPath: m_SizeDelta.x
       value: 50
@@ -427,6 +431,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 42.65
       objectReference: {fileID: 0}
+    - target: {fileID: 7204684804642736791, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7412843550072552849, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
       propertyPath: m_SizeDelta.x
       value: 50
@@ -546,10 +554,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5722434133821246391, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7204684804642736791, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}
-      propertyPath: m_text
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7204684804642736791, guid: d4c5ee215bac31f4fa7bdb68c7f8b324, type: 3}

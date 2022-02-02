@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 5432084578531805737}
   - component: {fileID: 7127332606546386272}
   m_Layer: 0
-  m_Name: BackgroundView
+  m_Name: GameBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -993,7 +993,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7374595844525518469}
   m_Layer: 0
-  m_Name: tape
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

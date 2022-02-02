@@ -8,7 +8,7 @@ namespace Code.Controllers.Game
 {
     public sealed class BackgroundController : BaseController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath {PathResource = "Prefabs/BackgroundView"};
+        private readonly ResourcePath _viewPath = new ResourcePath {PathResource = "Prefabs/GameBackground"};
         private readonly SubscribeProperty<float> _moveUpdate;
         private readonly SubscribeProperty<float> _diff;
 
