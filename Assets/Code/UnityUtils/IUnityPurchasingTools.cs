@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine.Purchasing;
 
-namespace Code.Analytics
+namespace Code.UnityUtils
 {
     public interface IUnityPurchasingTools
     {

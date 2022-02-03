@@ -1,4 +1,4 @@
-﻿namespace Code.Analytics
+﻿namespace Code.UnityUtils
 {
     public interface IAnalyticsTools
     {

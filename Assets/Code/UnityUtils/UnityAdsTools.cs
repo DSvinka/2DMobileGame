@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Advertisements;
 
-namespace Code.Analytics
+namespace Code.UnityUtils
 {
     public sealed class UnityAdsTools: MonoBehaviour, IAdsShower
     {
