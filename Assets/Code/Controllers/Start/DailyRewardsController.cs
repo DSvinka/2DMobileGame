@@ -8,10 +8,13 @@ using Code.Enums;
 using Code.Models;
 using Code.Repositories;
 using Code.Repositories.Models;
+using Code.UnityUtils;
 using Code.Views.UI;
 using DG.Tweening;
+using JetBrains.Annotations;
 using Unity.Notifications.Android;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 using Object = UnityEngine.Object;
 
 namespace Code.Controllers.Start
@@ -19,8 +22,12 @@ namespace Code.Controllers.Start
     public sealed class DailyRewardsController: BaseController
     {
         private const string NotificationName = "Ежедневные Награды";
+        private const string LocalizationTable = "Rewards";
+        private const string LocalizationTimerText = "timer_text";
+        private const string LocalizationDayText = "day_text";
         
         private readonly DailyRewardsView _dailyRewardsView;
+        private readonly UnityLocalizationTools _unityLocalizationTools;
         private readonly SettingsRewardConfig _settingsRewardConfig;
         private readonly RewardConfig[] _rewardConfigs;
 
@@ -45,6 +52,9 @@ namespace Code.Controllers.Start
             _savesRepository = _playerProfileModel.SavesRepository;
             _rewardSaveModel = _savesRepository.RewardSaveModel;
             AddController(_savesRepository);
+
+            _unityLocalizationTools = new UnityLocalizationTools(LocalizationTable);
+            AddController(_unityLocalizationTools);
 
             InitSlots();
             _dailyRewardsView.Init(CloseMenu, ClaimReward);
@@ -155,7 +165,7 @@ namespace Code.Controllers.Start
                 {
                     var nextClaimTime = _rewardSaveModel.TimeToReward.Value.AddSeconds(_settingsRewardConfig.TimeCooldown);
                     var currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
-                    var timeGetReward = $"Награда через {currentClaimCooldown.Days:D2}:{currentClaimCooldown.Hours:D2}:{currentClaimCooldown.Seconds:D2}";
+                    var timeGetReward = _unityLocalizationTools.GetLocalizedString(LocalizationTimerText, $"{currentClaimCooldown.Days:D2}:{currentClaimCooldown.Hours:D2}:{currentClaimCooldown.Seconds:D2}");
                     _dailyRewardsView.TimerNewReward.text = timeGetReward;
                     _dailyRewardsView.TimerSlider.value = (float) (currentClaimCooldown.TotalSeconds / _settingsRewardConfig.TimeCooldown);
                 }
@@ -163,7 +173,8 @@ namespace Code.Controllers.Start
 
             for (var i = 0; i < _slots.Count; i++)
             {
-                _slots[i].SetData(_rewardConfigs[i], i + 1, i == _rewardSaveModel.CurrentRewardSlot);
+                var dayCount = _unityLocalizationTools.GetLocalizedString(LocalizationDayText, i + 1);
+                _slots[i].SetData(_rewardConfigs[i], dayCount, i == _rewardSaveModel.CurrentRewardSlot);
             }
         }
 
@@ -171,8 +182,7 @@ namespace Code.Controllers.Start
         {
             for (var i = 0; i < _rewardConfigs.Length; i++)
             {
-                var instanceSlot = Object.Instantiate(_dailyRewardsView.SlotRewardViewPrefab,
-                    _dailyRewardsView.GridSlotsReward, false);
+                var instanceSlot = Object.Instantiate(_dailyRewardsView.SlotRewardViewPrefab, _dailyRewardsView.GridSlotsReward, false);
                 
                 _slots.Add(instanceSlot);
             }

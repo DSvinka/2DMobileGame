@@ -12,10 +12,10 @@ namespace Code.Views.UI
         [SerializeField] private TMP_Text _textDay;
         [SerializeField] private TMP_Text _textRewardCount;
 
-        public void SetData(RewardConfig rewardConfig, int countDay, bool isSelect)
+        public void SetData(RewardConfig rewardConfig, string day, bool isSelect)
         {
             _iconCurrency.sprite = rewardConfig.IconCurrency;
-            _textDay.text = $"День {countDay}";
+            _textDay.text = day;
             _textRewardCount.text = $"{rewardConfig.CountCurrency}";
             
             _backgroundSelect.gameObject.SetActive(isSelect);
