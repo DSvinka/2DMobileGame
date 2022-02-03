@@ -1,8 +1,8 @@
-﻿using Code.Analytics;
-using Code.Configs;
+﻿using Code.Configs;
 using Code.Controllers;
 using Code.Enums;
 using Code.Models;
+using Code.UnityUtils;
 using UnityEngine;
 
 namespace Code
@@ -13,7 +13,7 @@ namespace Code
         [SerializeField] private Transform _uiPoint;
         [SerializeField] private UnityAdsTools _unityAdsTools;
         [SerializeField] private UnityPurchasingTools _unityPurchasingTools;
-        
+
         [SerializeField] private DataSources _dataSources;
 
         private MainController _mainController;

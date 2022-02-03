@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Purchasing;
 
-namespace Code.Analytics
+namespace Code.UnityUtils
 {
     public class UnityPurchasingTools : MonoBehaviour, IStoreListener, IUnityPurchasingTools
     {

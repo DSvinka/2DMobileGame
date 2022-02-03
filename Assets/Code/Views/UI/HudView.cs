@@ -7,9 +7,9 @@ namespace Code.Views.UI
     {
         [SerializeField] private TMP_Text _distanceToGarage;
 
-        public void ChangeDistanceToGarage(float distance)
+        public void ChangeDistanceToGarageText(string text)
         {
-            _distanceToGarage.text = $"Гараж: {distance}";
+            _distanceToGarage.text = text;
         }
     }
 }

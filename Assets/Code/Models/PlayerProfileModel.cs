@@ -1,9 +1,10 @@
-﻿using Code.Analytics;
-using Code.Configs;
+﻿using Code.Configs;
 using Code.Configs.Settings;
 using Code.Enums;
 using Code.Properties;
 using Code.Repositories;
+using Code.UnityUtils;
+using UnityEngine.Playables;
 
 namespace Code.Models
 {
@@ -20,6 +21,7 @@ namespace Code.Models
 
         private SubscribeProperty<GameState> _currentGameState;
 
+        private UnityNotificationTools _notificationTools;
         private IUnityPurchasingTools _unityPurchasingTools;
         private IAnalyticsTools _analyticsTools;
         private IAdsShower _adsShower;
@@ -35,6 +37,7 @@ namespace Code.Models
 
         public SubscribeProperty<GameState> CurrentGameState => _currentGameState;
 
+        public UnityNotificationTools UnityNotificationTools => _notificationTools;
         public IUnityPurchasingTools UnityPurchasingTools => _unityPurchasingTools;
         public IAnalyticsTools AnalyticsTools => _analyticsTools;
         public IAdsShower AdsShower => _adsShower;
@@ -49,6 +52,7 @@ namespace Code.Models
             _settingsPlayerConfig = dataSources.SettingsDataSource.SettingsPlayerConfig;
             _currentGameState = new SubscribeProperty<GameState>();
 
+            _notificationTools = new UnityNotificationTools();
             _analyticsTools = new UnityAnalyticsTools();
             _unityPurchasingTools = unityPurchasingTools;
             _adsShower = unityAdsTools;
