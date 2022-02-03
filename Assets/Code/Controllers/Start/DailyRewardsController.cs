@@ -10,6 +10,7 @@ using Code.Repositories;
 using Code.Repositories.Models;
 using Code.Views.UI;
 using DG.Tweening;
+using Unity.Notifications.Android;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -17,6 +18,8 @@ namespace Code.Controllers.Start
 {
     public sealed class DailyRewardsController: BaseController
     {
+        private const string NotificationName = "Ежедневные Награды";
+        
         private readonly DailyRewardsView _dailyRewardsView;
         private readonly SettingsRewardConfig _settingsRewardConfig;
         private readonly RewardConfig[] _rewardConfigs;
@@ -27,6 +30,7 @@ namespace Code.Controllers.Start
         private readonly PlayerProfileModel _playerProfileModel;
         
         private List<SlotRewardView> _slots;
+        private bool _isNotificationSended;
         private bool _isGetReward;
         
         public DailyRewardsController(DailyRewardsView dailyRewardsView, PlayerProfileModel playerProfileModel, DataSources dataSources)
@@ -111,15 +115,31 @@ namespace Code.Controllers.Start
                 var timeSpan = DateTime.UtcNow - _rewardSaveModel.TimeToReward.Value;
                 if (timeSpan.TotalSeconds > _settingsRewardConfig.TimeDeadLine)
                 {
+                    _playerProfileModel.UnityNotificationTools.CreateNotification(
+                        NotificationName, "Вы пропустили ежедневную награду!", Importance.Low
+                    );
                     _rewardSaveModel.Delete();
                 }
                 else if (timeSpan.TotalSeconds < _settingsRewardConfig.TimeDeadLine)
                 {
                     _isGetReward = false;
+                    _isNotificationSended = false;
                 }
             }
-            
+
+            SendNotification();
             RefreshUi();
+        }
+
+        private void SendNotification()
+        {
+            if (_isGetReward && !_isNotificationSended)
+            {
+                _playerProfileModel.UnityNotificationTools.CreateNotification(
+                    NotificationName, "Вам доступна ежедневная награда!", Importance.High
+                );
+                _isNotificationSended = true;
+            }
         }
 
         private void RefreshUi()
