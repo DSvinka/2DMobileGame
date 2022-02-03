@@ -25,6 +25,14 @@ MonoBehaviour:
     m_Address: Assets/Localization/Rewards/Rewards Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
+  - m_GUID: cbcd58c7919539343ba06431f6781039
+    m_Address: Assets/Localization/GarageMenu/GarageMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 38087c8b07bd59744836b9d2bc0a2a12
+    m_Address: Assets/Localization/Game/Game Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 45c9c7f4473b6194cb6d49a83c228ade, type: 2}
   m_SchemaSet:

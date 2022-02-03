@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: GarageMenu Shared Data
   m_EditorClassIdentifier: 
   m_TableCollectionName: GarageMenu
-  m_TableCollectionNameGuidString: 00000000000000000000000000000000
-  m_Entries: []
+  m_TableCollectionNameGuidString: cbcd58c7919539343ba06431f6781039
+  m_Entries:
+  - m_Id: 5380378624
+    m_Key: exit_button
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

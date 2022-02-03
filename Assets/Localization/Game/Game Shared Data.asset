@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: Game Shared Data
   m_EditorClassIdentifier: 
   m_TableCollectionName: Game
-  m_TableCollectionNameGuidString: 00000000000000000000000000000000
-  m_Entries: []
+  m_TableCollectionNameGuidString: 38087c8b07bd59744836b9d2bc0a2a12
+  m_Entries:
+  - m_Id: 6953242624
+    m_Key: garage_distance_text
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
