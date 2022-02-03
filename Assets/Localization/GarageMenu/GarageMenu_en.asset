@@ -17,6 +17,10 @@ MonoBehaviour:
   m_SharedData: {fileID: 11400000, guid: cbcd58c7919539343ba06431f6781039, type: 2}
   m_Metadata:
     m_Items: []
-  m_TableData: []
+  m_TableData:
+  - m_Id: 5380378624
+    m_Localized: Exit Garage
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

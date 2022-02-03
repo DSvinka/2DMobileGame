@@ -29,6 +29,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ru
     - Preload
+  - m_GUID: ab8abb9248bb8614395cff2b68e74e77
+    m_Address: GarageMenu_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
+  - m_GUID: a5088cf2800253641903ef4e5fa5ea45
+    m_Address: Game_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 45c9c7f4473b6194cb6d49a83c228ade, type: 2}
   m_SchemaSet:

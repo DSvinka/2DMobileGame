@@ -16,14 +16,16 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: bef48afb5e0bda74798a25d67884b3d3, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - id: 0
   m_TableData:
   - m_Id: 242291445760
     m_Localized: Get Reward
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - id: 0
   - m_Id: 132987883520
-    m_Localized: Day {day}
+    m_Localized: Day {0}
     m_Metadata:
       m_Items: []
   - m_Id: 17447391232
@@ -31,8 +33,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 14297468928
-    m_Localized: Reward will be available in {time}
+    m_Localized: Reward will be available in {0}
     m_Metadata:
       m_Items: []
   references:
     version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0010b26938000000
